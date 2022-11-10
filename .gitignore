@@ -1,0 +1,11 @@
+nea-writeup/bin
+nea-writeup/tex
+nea-writeup/.obsidian
+lilac-implementation/venv
+lilac-implementation/.cache
+lilac-implementation/.config
+lilac-implementation/.idea
+lilac-implementation/.replit
+lilac-implementation/.upm
+*/.DS_Store
+

@@ -44,11 +44,39 @@ I see Lilac in this way. The issue that it is trying to solve is the accessibili
 \subsection{Translator Design}\label{sec:translator-design}
 A translator is a piece of utility software that takes one set of program source code and turns it (translates) into the program source code of another language. They are incredibly versatile pieces of software, and as such there are many different ways of desinging and implementing translators. Generally, they come in three different forms. Most basic are assemblers, which take assembly language code and translate it to executable machine code. Then, we have interpreters and compilers, which translate high level languages. These are significantly more complicated, since they also have to take into account the code semantics and structure. Interpreters and compilers differ generally in their output. And interpreter translates line by line (or construct by construct) and executes as it goes, stopping when it reaches a halting condition; this could be an error or just the end of the code. Compilers translate the entire source code and output an executable machine code file. It always stops when it reaches the end, forming a list of errors as it goes.\\
 \\
-Although interpreters and compilers have separate outputs, they follow very similar steps. The way that these steps are connected, so the path that the data takes, is part of what gives each language and translator its individual flavor..\\
+Although interpreters and compilers have separate outputs, they follow very similar steps. The way that these steps are connected, so the path that the data takes, is part of what gives each language and translator its individual flavor.\\
 \\
-%\verb|Missing Pasted image 20221024115702.png |500|\\
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+  \draw[fill=purple!30] (-1.4, 0.4) -- (1.4, 0.4)-- (1.4, -5.5) -- (-1.4, -5.5) -- (-1.4, 0.4);
+  
+  \node[rectangle, fill=white, draw] (source) at (0,0) {Source Code};
+  \node[rectangle, fill=white, draw] (lexer) at (0,-1) {Lexer};
+  \node[rectangle, fill=white, draw] (parser) at (0,-2) {Parser};
+  \node[rectangle, fill=white, draw] (execution) at (0,-5) {Execution};
+  \node[rectangle, fill=white, draw] (inter) at (4.5,-2) {Intermediate Code};
+  \node[rectangle, fill=white, draw] (codegen) at (4.5,-3) {Machine Code Generator};
+  \node[rectangle, fill=white, draw] (optimiser) at (4.5,-4) {Code Optimiser};
+  \node[rectangle, fill=white, draw] (execfile) at (4.5,-5) {Executable File};
+  \node[rectangle, fill=white, draw] (vm) at (8.5,-2) {Virtual Machine};
+  
+  \draw[thick, ->] (source) -- (lexer);
+  \draw[thick, ->] (lexer) -- (parser);
+  \draw[thick, ->] (parser) -- (execution);
+  \draw[thick, ->] (parser) -- (inter);
+  \draw[thick, ->] (inter) -- (codegen);
+  \draw[thick, ->] (codegen) -- (optimiser);
+  \draw[thick, ->] (optimiser.west) -- (execution);
+  \draw[thick, ->] (codegen.west) -- (execution);
+  \draw[thick, ->] (optimiser) -- (execfile);
+  \draw[thick, ->] (inter) -- (vm);
+\end{tikzpicture}
+\label{fig:translator-graph}
+\caption{Graph showing the possible steps a translator might take.}
+\end{figure}
 \\
-The first two stages are common to all translators. The lexer performs lexical analysis on the source code. This turns the input text into a list of tokens. At their simplest, tokens are just simple pairs that each represent one semantic component of the source code. In programming, the line of code \verb|var: 3| would be turned into \verb|[(Identifier, 'var'), (Assi| \verb|gnment, ':'), (Number, 3)]|. At this point, errors can already be caught. For example, if an identifier does not start with a letter or if an illegal symbol is used, the lexer will catch this. If we introduce an example from english, the sentence "The cat likes to sleep" is composed of different types of words. The lexer would be where we notice that "Teh cta ilkse ot eples" is not an allowed sentence in english, since none of the words are allowed. However, the lexer would not notice that "cat to the sleep likes" is not an allowable sentence.\\
+Figure \ref{fig:translato-rgraph} shows the steps a translator could take when executing a piece of program source code. The section in the purple box is what my project is limited to. The first two stages are common to all translators. The lexer performs lexical analysis on the source code. This turns the input text into a list of tokens. At their simplest, tokens are just simple pairs that each represent one semantic component of the source code. In programming, the line of code \verb|var: 3| would be turned into \verb|[(Identifier, 'var'), (Assi| \verb|gnment, ':'), (Number, 3)]|. At this point, errors can already be caught. For example, if an identifier does not start with a letter or if an illegal symbol is used, the lexer will catch this. If we introduce an example from english, the sentence "The cat likes to sleep" is composed of different types of words. The lexer would be where we notice that "Teh cta ilkse ot eples" is not an allowed sentence in english, since none of the words are allowed. However, the lexer would not notice that "cat to the sleep likes" is not an allowable sentence.\\
 \\
 Now, the source code is represented as a flat list of tokens. However this list does not have any grammatical structure. Adding this structure is the next step, called parsing. The result is a parse tree or abstract syntax tree, a tree data structure which represents the grammatical structure of a string. This is where operator precedence and associativity becomes apparent, and differentiates \verb|(3+2)*4| from \verb|3+(2*4)|. Here, grammatical errors are noticed. If I use the assignment operator with nothing on one side, this is noticed as an error. To use the english example, the parser would notice that "cat to the sleep likes" should not be allowed as an english sentence, because the order of word types does not follow the rules of the grammar. For "the cat likes to sleep", the parse tree may look like:\\
 

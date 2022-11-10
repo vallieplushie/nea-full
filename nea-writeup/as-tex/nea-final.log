@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.16)  10 NOV 2022 08:11
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.16)  10 NOV 2022 20:15
  restricted system commands enabled.
  file:line:error style messages enabled.
 **nea-final.tex
@@ -1043,140 +1043,143 @@ Underfull \hbox (badness 10000) in paragraph at lines 40--44
 [1
 
 {/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 45--54
+
+LaTeX Warning: Reference `fig:translato-rgraph' on page 2 undefined on input li
+ne 79.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--54
+Underfull \hbox (badness 10000) in paragraph at lines 45--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--54
+Underfull \hbox (badness 10000) in paragraph at lines 45--82
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 45--54
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 45--54
+Underfull \hbox (badness 10000) in paragraph at lines 45--82
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 94--95
+Underfull \hbox (badness 10000) in paragraph at lines 122--123
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 158--159
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 162--164
+Underfull \hbox (badness 10000) in paragraph at lines 186--187
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
+Underfull \hbox (badness 10000) in paragraph at lines 190--192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 181--183
+Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--200
+Underfull \hbox (badness 10000) in paragraph at lines 209--211
 
  []
 
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 216--218
+Underfull \hbox (badness 10000) in paragraph at lines 226--228
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--225
+Underfull \hbox (badness 10000) in paragraph at lines 244--246
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--230
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 243--244
+Underfull \hbox (badness 10000) in paragraph at lines 256--258
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 263--265
+Underfull \hbox (badness 10000) in paragraph at lines 271--272
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--279
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 324--326
+Underfull \hbox (badness 10000) in paragraph at lines 354--356
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 360--362
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 370--371
+Underfull \hbox (badness 10000) in paragraph at lines 390--392
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 380--381
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 406--407
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
 
  []
 
 [10]
-Underfull \hbox (badness 10000) in paragraph at lines 448--450
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
 
  []
 
-[11] (./nea-final.aux)
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 478--480
+
+ []
+
+[12] (./nea-final.aux)
+
+LaTeX Warning: There were undefined references.
+
 Package rerunfilecheck Info: File `nea-final.out' has not changed.
 (rerunfilecheck)             Checksum: 2D4FF7FA2FB2F15C4EDA82F361B19FE0;2382.
 )
 
 Here is how much of LuaTeX's memory you used:
- 34430 strings out of 477785
+ 34525 strings out of 477785
  100000,1373583 words of node,token memory allocated
  505 words of node memory still in use:
    6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 54 glue_spec,
  8 attribute_list, 2 write nodes
-   avail lists: 2:1776,3:817,4:199,5:468,6:81,7:7854,8:61,9:587,10:20,11:513
- 53999 multiletter control sequences out of 65536+600000
+   avail lists: 2:1764,3:640,4:199,5:468,6:81,7:7628,8:61,9:514,10:20,11:508
+ 54092 multiletter control sequences out of 65536+600000
  74 fonts using 14241103 bytes
- 100i,8n,98p,1101b,692s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 100i,9n,98p,1157b,747s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/valerie/Library/Fonts/JetBrains Mono Regular Nerd Font Complete.ttf></us
 r/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><
 /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf
@@ -1185,10 +1188,10 @@ r/local/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf><
 /usr/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/lo
 cal/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on nea-final.pdf (11 pages, 107845 bytes).
+Output written on nea-final.pdf (12 pages, 109984 bytes).
 
-PDF statistics: 191 PDF objects out of 1000 (max. 8388607)
- 160 compressed objects within 2 object streams
- 36 named destinations out of 1000 (max. 131072)
+PDF statistics: 196 PDF objects out of 1000 (max. 8388607)
+ 164 compressed objects within 2 object streams
+ 38 named destinations out of 1000 (max. 131072)
  136 words of extra memory for PDF output out of 10000 (max. 100000000)
 
