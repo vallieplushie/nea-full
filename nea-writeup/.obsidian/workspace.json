@@ -1,0 +1,168 @@
+{
+  "main": {
+    "id": "7601ed1eb0a4e5ea",
+    "type": "split",
+    "children": [
+      {
+        "id": "44d8973f2cfc5a01",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "77a4c63bf89ab3d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Nea-Final.md",
+                "mode": "source",
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "e3c206ed271b5069",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Untitled.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "22f8cd3e847a6abc",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.0.3"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "7f5c312fd0b490f2",
+    "type": "split",
+    "children": [
+      {
+        "id": "7f5af910cbcfaa9b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7c8f7e3fd6337b7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "fd52266b7e38b96a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "59b4824056c33106",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "right": {
+    "id": "f893cf070f09398d",
+    "type": "split",
+    "children": [
+      {
+        "id": "166f1f4015f7e435",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "47a8d1c96cef4491",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Nea-Final.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "e12de434fc5fd426",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Nea-Final.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7f8e0595dbbacdab",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "bd73b76da5f6c9b9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Nea-Final.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "77a4c63bf89ab3d4",
+  "lastOpenFiles": [
+    "Untitled.md",
+    "Nea-Final.md",
+    "Lilac BNF.md"
+  ]
+}

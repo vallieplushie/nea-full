@@ -1,0 +1,8 @@
+return {
+ ["filename"]="/Users/valerie/Documents/Sixth-Form/Computer-Science/nea-writeup/as-tex/output.tex",
+ ["lastcontext"]="\nl.1 \\documentclass\n                 {article}",
+ ["lastluaerror"]="?",
+ ["lasttexerror"]="! Undefined control sequence",
+ ["linenumber"]=1,
+ ["offset"]=10,
+}

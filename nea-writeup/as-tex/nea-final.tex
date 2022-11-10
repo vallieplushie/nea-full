@@ -1,0 +1,452 @@
+\documentclass[a4paper, 12pt]{article}
+
+%%%%%%%% FRONT MATTER %%%%%%%%
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true, pdfstartview=FitV, linkcolor=purple, 
+            citecolor=black, urlcolor=blue]{hyperref}
+\usepackage{amsmath, amssymb}
+\usepackage{xcolor}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{verbatim}{Verbatim}{xleftmargin=.2in, frame=single}
+\usepackage{fontspec}
+\setmonofont{JetBrainsMonoNerdFont}[Contextuals=Alternate, Scale=0.8]
+\pagenumbering{arabic}
+\pagecolor{white}
+
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+%\makeatletter
+%\newcommand{\verbatimfont}[1]{\def\verbatim@font{#1}}%
+%\makeatother
+%\verbatimfont{\mono}
+
+%%%%%%%% TITLR %%%%%%%
+
+\title{\textbf{Computer Science NEA}\\ \em Lilac Programming Language}
+\author{Name: Valerie Thibault\\Candidate Number: 3253\\Centre Number: 14613}
+\date{}
+
+%%%%%%%% BODY %%%%%%%
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Analysis}\label{sec:analysis}
+\subsection{Introduction}\label{sec:introduction}
+For my A-level project I am going to design and implement a small programming language, called Lilac. In the world of programming languages, there are the big production languages: Python, JavaScript, C++, C\#, etc. While they are the most commonly used languages, they are by no means the only ones. On the outskirts of the field of language design, there are many small languages which seek to either push the boundaries of computation and abstraction, or that have incredibly specific applications (along with, of course, the ones written as jokes). For example, the \verb|Orca| language is a two-dimensional graphical language which is designed for programmatic music production. \verb|Pinecone| was another attempt at creating a light minimal c-style language. And most commonly formats such as \verb|toml| and \verb|yaml| that are used for configuration files lean gently into the most minimal of language. To summarise, wherever there could be an issue with one of the large languages, there are small languages being designed to try to fix it.\\
+\\
+I see Lilac in this way. The issue that it is trying to solve is the accessibility of functional programming. Haskell, the giant of the paradigm, is incredibly difficult to learn because it is a huge jump in abstraction and type theory. But often the functional approach to problem solving is the most efficient, and it is an incredibly powerful paradigm. My motivation for this project is to create an intermediary language, a solution that is genuinely functional, but not overwhelming for a first-time functional programmer. As such, the type system should be loose, and I take some liberties with the strictness of functions. But at the core of it, it is a language strongly inspired by lambda calculus, and the aim is that learning Lilac would solidly introduce the concepts necessary for functional programming.\\
+\\
+\subsection{Translator Design}\label{sec:translator-design}
+A translator is a piece of utility software that takes one set of program source code and turns it (translates) into the program source code of another language. They are incredibly versatile pieces of software, and as such there are many different ways of desinging and implementing translators. Generally, they come in three different forms. Most basic are assemblers, which take assembly language code and translate it to executable machine code. Then, we have interpreters and compilers, which translate high level languages. These are significantly more complicated, since they also have to take into account the code semantics and structure. Interpreters and compilers differ generally in their output. And interpreter translates line by line (or construct by construct) and executes as it goes, stopping when it reaches a halting condition; this could be an error or just the end of the code. Compilers translate the entire source code and output an executable machine code file. It always stops when it reaches the end, forming a list of errors as it goes.\\
+\\
+Although interpreters and compilers have separate outputs, they follow very similar steps. The way that these steps are connected, so the path that the data takes, is part of what gives each language and translator its individual flavor..\\
+\\
+%\verb|Missing Pasted image 20221024115702.png |500|\\
+\\
+The first two stages are common to all translators. The lexer performs lexical analysis on the source code. This turns the input text into a list of tokens. At their simplest, tokens are just simple pairs that each represent one semantic component of the source code. In programming, the line of code \verb|var: 3| would be turned into \verb|[(Identifier, 'var'), (Assi| \verb|gnment, ':'), (Number, 3)]|. At this point, errors can already be caught. For example, if an identifier does not start with a letter or if an illegal symbol is used, the lexer will catch this. If we introduce an example from english, the sentence "The cat likes to sleep" is composed of different types of words. The lexer would be where we notice that "Teh cta ilkse ot eples" is not an allowed sentence in english, since none of the words are allowed. However, the lexer would not notice that "cat to the sleep likes" is not an allowable sentence.\\
+\\
+Now, the source code is represented as a flat list of tokens. However this list does not have any grammatical structure. Adding this structure is the next step, called parsing. The result is a parse tree or abstract syntax tree, a tree data structure which represents the grammatical structure of a string. This is where operator precedence and associativity becomes apparent, and differentiates \verb|(3+2)*4| from \verb|3+(2*4)|. Here, grammatical errors are noticed. If I use the assignment operator with nothing on one side, this is noticed as an error. To use the english example, the parser would notice that "cat to the sleep likes" should not be allowed as an english sentence, because the order of word types does not follow the rules of the grammar. For "the cat likes to sleep", the parse tree may look like:\\
+
+%\verb|Missing Pasted image 20221026100107.png|500|\\
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+  \node[rectangle] (s) at (0,0) {Sentence};
+  \node[rectangle] (np) at (-2,-1) {Noun Phrase};
+  \node[rectangle] (det) at (-3,-2) {Determiner};
+  \node[rectangle] (n) at (-1,-2) {Noun};
+  \node[rectangle, draw] (the) at (-3,-4) {the};
+  \node[rectangle, draw] (cat) at (-1,-4) {cat};
+  
+  \node[rectangle] (vp) at (2.5, -1) {Verb Phrase};
+  \node[rectangle] (verb) at (1,-2) {Verb};
+  \node[rectangle] (vp2) at (4, -2) {Verb Phrase};
+  \node[rectangle] (p) at (3,-3) {Particle};
+  \node[rectangle] (verb2) at (5, -3) {Verb};
+  \node[rectangle, draw] (likes) at (1,-4) {likes};
+  \node[rectangle, draw] (to) at (3,-4) {to};
+  \node[rectangle, draw] (sleep) at (5,-4) {sleep};
+
+  \draw[thick] (s) -- (np)
+  	      (s) -- (vp)
+               (np) -- (det)
+               (np) -- (n)
+               (vp2) -- (p)
+               (vp2) -- (verb2)
+               (vp) -- (verb)
+               (vp) -- (vp2);
+               
+  \draw[thick, dashed]
+               (det) -- (the)
+               (verb) -- (likes)
+               (n) -- (cat)
+               (p) -- (to)
+               (verb2) -- (sleep);
+\end{tikzpicture}
+\caption{English parse tree of the sentence "the cat likes to sleep"}
+\end{figure}
+
+For a simple line of code in Lilac like \verb|var: 4 * (2 + 3)| it would look like:\\
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}
+
+\node[rectangle] (assign) at (0,0) {Assignment};
+\node[rectangle] (id) at (-1.5,-1) {Identifier};
+\node[rectangle] (mult) at (2.5,-1) {Multiplication};
+\node[rectangle] (num4) at (1.5,-2) {Number};
+\node[rectangle] (add) at (4.5,-2) {Addition};
+\node[rectangle] (num2) at (3.5,-3) {Number};
+\node[rectangle] (num3) at (5.5,-3) {Number};
+\node[rectangle, draw] (var) at (-1.5,-4) {var};
+\node[rectangle, draw] (colon) at (0,-4) {:};
+\node[rectangle, draw] (four) at (1.5,-4) {4};
+\node[rectangle, draw] (star) at (2.5,-4) {*};
+\node[rectangle, draw] (two) at (3.5,-4) {2};
+\node[rectangle, draw] (plus) at (4.5,-4) {+};
+\node[rectangle, draw] (three) at (5.5,-4) {3};
+
+\draw[thick] (assign) -- (id)
+             (assign) -- (mult)
+             (mult) -- (num4)
+             (mult) -- (add)
+             (add) -- (num2)
+             (add) -- (num3);
+
+\draw[thick, dashed] (id) -- (var)
+             (assign) -- (colon)
+             (num4) -- (four)
+             (mult) -- (star)
+             (num2) -- (two)
+             (add) -- (plus)
+             (num3) -- (three);
+\end{tikzpicture}
+\caption{An example parse tree for Lilac}
+\end{figure}
+
+Notice that in this in this tree the parentheses are not included. Instead, they are used to specify subtrees of the overall parse tree. If I wrote \verb|4 * 2 + 3|, the parser would realise that \verb|*| is first in the order of operations. It would therefore treat it as \verb|(4 * 2) + 3|, which produces a different tree.
+\\
+There are several ways to define the grammar of a language, and the algorithms to parse it. A common method for defining a grammar is through production rules, usually written in a syntax called Backus-Naur Form. Here is an example, which defines arithmetic between integers and the order of operations:
+% null null\\
+\begin{verbatim}
+<expr> ::= <expr> + <term>
+         | <expr> - <term>
+         | <term>
+
+<term> ::= <term> * <factor>
+         | <term> / <factor>
+         | <factor>
+
+<factor> ::= ( <expr> )
+           | - <factor>
+           | <int>
+
+<int> ::= <int><digit>
+     s   | <digit>
+
+<digit> ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+\end{verbatim}
+
+The use of \verb|::=| defines a rule in the production, which is represented with an identifier within the angle brackets. For example, the rule \verb|<expr>| tells us that it is either an \verb|<expr>| followed by a \verb|+| symbol followed by a \verb|<term>|, or an \verb|<expr>| followd by a \verb|-| symbol followed by a \verb|<term>|, or just a \verb|<term>|. The repeated application of these rules can be used to determine whether a string of terminal characters (everything that is not \verb|::=|, \verb|\||, or in angle brackets) can be produced from this grammar. There is no way to make the string \verb|3+|, so this is not part of the language defined by the grammar. This sort of definition is used for context-free languages, where the syntax can always be represented by a set of deterministic rules. Parsing algorithms are generally divided in two categories. Top-down parsers start with the wider rules and then narrow down, while bottom-up parsers start with the terminals and build up a parse tree.\\
+
+Execution is comparatively simpler. Most methods use a walk through the parse tree along with a call stack to execute the code. The call stack keeps track of the order in which sections of code should be executed. The individual pieces are wrapped in "stack frames" that seperate scope and pointers. For example, recursive function calls are protected by the stack frames so that the inner scopes do not overwrite the outer scope. After something is pushed to the call stack it can then be popped and executed in the correct ordder. If the interpreter is written in a low-level language the individual memory management of each operation has to be implemented. If it is written in a high-level language then the operations would be implemented in that same high level language.\\
+
+\subsection{Proposed Solution}\label{sec:proposed-solution}
+
+My proposed solution is called \verb|Lilac|. It is a minimal functional programming language inspired by the syntax of Pinecone and Boa, along with the function logic of Haskell. Here is an example source file:\\
+% null null\\
+\begin{verbatim}
+main: ( print "Hello World" )
+
+addToThree: ( fn x -> 3 + x )
+
+fooBarBaz:
+  let (
+    byThree: n % 3,
+    byFive: n % 5 )
+  in (
+    fn n -> byThree ? "Foo" | byFive ? "Bar" | "Baz" )
+\end{verbatim}
+\subsubsection{Language Specification:}\label{sec:language-specification}
+\paragraph{Types:}
+Lilac has built in data types \verb|number|, \verb|string|, and \verb|boolean|, although these are mostly hidden from the user. Lilac is dynamically and weakly typed. The set \verb|number| is defined as all integers and floating point numbers, \verb|string| is the set of all character strings, and \verb|boolean| is the set \verb|{true, false}|.\\
+
+\paragraph{Operators:}
+All the standard operators for numeric arithmetic, boolean arithmetic, logic and comparison are implemented:\\
+% null null\\
+\begin{verbatim}
+Numbers: +, -, *, /, %
+Boolean: &&, ||, !
+Comparison: =, <, >, <=, >=, != (! =)
+\end{verbatim}
+
+\paragraph{Variables:}
+Variables are created when a value is assigned to a name using the \verb|:| operator. Lilac evaluates lazily, which means that it does not evaluate any expressions untill the point where the value is needed. This means that you could define the variable \verb|x: 3 + 2|, and it will be kept in memory as the expression $3+2$ until x is referenced. This is unlike eager evaluation where the value of \verb|x| is immediately calculated on assignment.
+
+In Lilac everything is also a first-class citizen, which means that practically any expression (other than an assignment) can be assigned to a variable or passed to and from a function.
+
+\paragraph{Conditionals:}
+Lilac uses a ternary operator syntax for an if-then-else statement. The statement "if x then y else z" is \verb|x ? y | z|. Of course, \verb|z| could be another conditional expression; if \verb|z: a ? b | c|, the statement becomes \verb|x ? y | a ? b | c|, or in natural language "if x then y else if a then b else c". From an evaluation point of view, conditional expressions aren't staatements or control structures, but operators that evaluate to values. So, our first example \verb|x ? y | z| is equivalent to \verb|y| if \verb|x| is true. This means a variable can have a conditional value.
+
+\paragraph{Functions:}
+The syntax for function defintion is inspired by lambda expressions in haskell and python:\\
+% null null
+\begin{verbatim}
+Haskell:
+	(\x -> x + 2)
+Python:
+	(lambda x: x + 2)
+Lilac:
+	( fn x -> x + 2 )
+\end{verbatim}
+
+The label \verb|fn| is explicitly required to show that it is a function (in the future there is the possibility of adding different varieties). A function can be treated as a block which is assigned to a variable, or a lambda which is directly applied to a value, or again as a first class citizen that is returned from another function. Function application uses a blank whitespace as the operator. Crucially, this is left associative. Consider this example:
+% null null
+\begin{verbatim}
+add: ( fn x -> ( fn y -> x + y ))
+add 3 2 = (add 3) 2 = 5
+\end{verbatim}
+
+The second line is true because of the left associativity of the whitespace operator. \verb|(add 3)| returns a function which is applied to \verb|2|. The operator \verb|;| can be used to change the direction of associativity, similarly to parentheses:\\
+% null null
+\begin{verbatim}
+print add 3 2 = (((print add) 3) 2) (Error because (print add) does not return a function)
+print;add 3 2 = (print ((add 3) 2))
+\end{verbatim}
+
+\paragraph{Let-In expression:}
+This expression is inspired from mathematical literature where the values in an expression are often specified in the following way:\\
+
+\[ \text{let}\ a=2\ \text{and}\ b=3\ \text{in}\ \sqrt{a^2+b^2} \]
+
+In Lilac, it can be helpful to be able to break up a function into temporary definitions. It could be done in the following way:\\
+% null null\\
+\begin{verbatim}
+divBy:
+  ( fn n -> ((fn x -> x % 3) n = 0 ? "Three" | 
+             (fn x -> x % 5) n = 0 ? "Five" | "Other" ))
+
+divBySimpler:
+  let 
+    ( byThree: ( fn x -> (x % 3) = 0 ),
+      byFive:  ( fn x -> (x % 5) = 0 ))
+  in
+    ( fn n -> byThree n ? "Three" | byFive n ? "Five" | "Other" )
+\end{verbatim}
+\subsection{Objectives}\label{sec:objectives}
+By the end of this project I aim to have written an interpreter for the Lilac programming language which can:\\
+\begin{itemize}
+\item 
+Execute arithmetic
+\item 
+Execute boolean arithmetic and comparison
+\item 
+Define and store variables
+\item
+Define and use functions
+\item 
+Conditional statements
+\item 
+Recursive function calls and definitions
+\end{itemize}
+
+In addition to this, the interpreter should provide a REPL and the ability to run source files. It should also be able to import files into the REPL or another script. This should also be accessible from a shell script.
+
+\section{Design}\label{sec:design}
+\subsection{Stage One: Framework and Interface}\label{sec:stage-one-framework-and-interface}
+I start with a driver class called \verb|Lilac|. This will contain all the interactive elements of the interpreter, and drive the execution. The class will expose the useful functions \verb|runFile|, \verb|runLine|, both of which take a simple string of text and then execute it as lilac. It also provides a REPL functionality that can provides an interactive output as shown here:\\
+% null null
+\begin{verbatim}
+Lilac Interactive Mode
+
+<i> str: "hello"
+<i> length str
+<o> 5
+<i> f:
+  >   let ( y: length str )
+  >   in ( fn n -> y + n )
+<i> x + f 3
+<e> [Line 1] NameNotDefinedError: The name 'x' does not exist in this scope
+\end{verbatim}
+\subsubsection{Error Reporting}\label{sec:error-reporting}
+It is crucial that my project implements some kind oferror checking and reporting. There are many errors that a user could make, and each should be differentiated and handled. There needs to be some kind of enumerable which keeps track of all the error types. It will look as follows:\\
+
+\begin{verbatim}
+enum ErrorType:
+	SyntaxError
+	NameUndefinedError
+	ArgumentError
+	TypeError
+\end{verbatim}
+
+gitPass
+
+These will be used in conjunctino with Lilac's \verb|error| method. This will take an error type, a line number, and a message about the error to print.
+
+\subsection{Stage Two: Lexical Analysis}\label{sec:stage-two-lexical-analysis}
+The lexer is represented by a Lexer class:
+
+\begin{verbatim}
+class Lexer:
+    tokens :: List[Tokens]
+    source :: String
+
+    scan :: method
+    add_token :: method
+    match_next :: String -> bool
+    peek :: method -> String
+    is_alpha :: String -> bool
+    is_num :: String -> Bool
+\end{verbatim}
+
+The scan method implements the scanning algorithm. This takes the source code as a string and loops through it. The algorithm is as follows:
+% null null\\
+\begin{verbatim}
+while not at the end of the source:
+    character = consume the next character
+    match on character:
+        if it represents a single charcter token:
+            add token(character)
+        if it can start a two character token:
+            check the next character without consuming
+            add token(both characters)
+        otherwise:
+            add token representing a number or identifier
+            or throw an error
+
+\end{verbatim}
+
+\subsection{Stage Three: Parsing}\label{sec:stage-three-parsing}
+In parsing, I seek to translate the list of tokens that the Scanner outputs into a tree data structure. I decide to use a recursively defined tree in order to optimise the simplicity and dynamicity of the structure definition. The tree type is defined as follows:\\
+% null null
+\begin{verbatim}
+class Tree:
+	token :: Token
+	action :: Action
+	left :: Tree
+	right :: Tree
+
+	is_leaf :: Tree -> boolean
+\end{verbatim}
+
+The parser uses a recursive, functional approach:
+% null null\\
+\begin{verbatim}
+function to_tree(tokens: list of tokens):
+	if there is still at least one operator in the source:
+		index = find position of the lowest precedence operator
+		action = make a new action corresponding to this operator
+		
+		left_expr = all tokens to the left of index
+		right_expr = all tokens to the right of index
+		operator = element of tokens at index
+		
+		clean outer parentheses from the left and the right
+		
+		left_tree = to_tree(left_expr)
+		right_tree = to_tree(right_expr)
+		return a Tree with operator, action, left_tree, right_tree
+		
+	otherwise:
+		action = make a new literal action
+		return a Tree with operator, action
+\end{verbatim}
+\subsection{Stage Four: Execution}\label{sec:stage-four-execution}
+\subsubsection{Execution model: The Tree Machine}\label{sec:execution-model-the-tree-machine}
+The parser, thanks to my design of Lilac, outputs a recursive binary parse tree. At this point there are a few ways to proceed with execution. I considered doing a reverse order traversal, and then using a simple stack/virtual machine. However, it is difficult to implement code branching and lay evaluation this way. This is due to the fact that it is a bottom up technique, so at the leaves it is completely unaware of the context above it. Instead, i decide to manipulate the AST directly, and to execute it recursively in a top down manner. This is handled by my driving class, the \verb|TreeMachine|. It is defined as follows:\\
+% null null\\
+\begin{verbatim}
+TreeMachine:
+    env_monad :: EnvMonad
+    tree :: Tree
+    
+    execute :: Tree -> (*output)
+\end{verbatim}
+
+The TreeMachine is the object that is responsible for running the code. In the REPL context it will only do the execute function on one line, but in a script context it will also handle imports, (running the machine on another source file while ignoring main), and running \verb|main|.\\
+
+\subsubsection{Monads: Stack}\label{sec:monads-stack}
+A central issue in my design is deciding where behaviours go, and who handles what. To solve this, I decide to opt for a monadic model. A monad is an object that contains some value, and handles behaviors and side effects relating to that value. This is helpful for separating behavior from types, and to improve the simplicity of the code. For example, the \verb|Maybe| monad allows for safe computation. The data stored within it can be either \verb|Just x| or \verb|Nothing|. If a computation fails, the monad catches this and makes the value \verb|Nothing| - our computation is saved. The two main components of a monad are the \verb|return| function and thhe \verb|bind| function. Borrowing the type signatures from haskell, these look like:
+% null null\\
+\begin{verbatim}
+return :: Monad m => a -> m a
+bind (>>) :: Monad m => m a -> (a -> m b) -> m b
+\end{verbatim}
+
+Here we see that \verb|return| takes a value of type \verb|a| and returns a monad containing a value of type a. In an object-oriented way, this is the class constructor. We also see that bind, which also has the operator \verb|>>| takes a monad of type \verb|a| and a function that returns a monad of type \verb|b|, then returns a monad of type \verb|b|. Simply, it takes a monad, applies the function to the value inside the monad, then returns the output from that. This is the central benefit of the monad; the behavior is completely separate from the value.\\
+
+For my call-stack, which is used to evaluate expressions, I use this model. I create three classes: \verb|Stack|, \verb|Node|, and \verb|StackMonad|. The stack is defined in a dynamic linked way using the \verb|Node| class in the following way:
+% null null\\
+\begin{verbatim}
+class Node:
+    value :: Token
+    next :: Node
+
+class Stack:
+    top :: Node
+    
+    pop :: Stack -> Stack
+    push :: Stack -> Token -> Stack
+\end{verbatim}
+
+Then, I define the \verb|StackMonad| like so:
+% null null
+\begin{verbatim}
+class StackMonad
+    stack :: Stack
+    out :: List[Tokens]
+    
+    (>>) :: StackMonad -> function -> StackMonad
+\end{verbatim}
+
+The functions that bind will take are the stack operations, and bind will simply run them. The output of popping the stack is stored in the \verb|out| list of the monad.\\
+\subsubsection{Monad: Environment and Actions}\label{sec:monad-environment-and-actions}
+I have an \verb|Environment| class, which can also be thought of as a scope. This class looks as follows:
+% null null\\
+\begin{verbatim}
+class Environment:
+    stack_monad :: StackMonad
+    table :: Dictionary
+    tree :: Tree (optional)
+\end{verbatim}
+
+We can see here that the environment holds only data, and no behaviors. It is contained within my \verb|EnvMonad| class:
+% null null\\
+\begin{verbatim}
+class EnvMonad:
+    env :: Environment
+    trace :: List
+    
+    bind (or >>) :: EnvMonad -> Action -> EnvMonad
+    consume :: EnvMonad -> Environment -> EnvMonad
+\end{verbatim}
+
+The \verb|bind| function is a feature of monads. It takes an \verb|EnvMonad| (i.e. self) and an \verb|Action|, runs the action on the data of the monad, then returns the result wrapped in a new monad. The \verb|Action| is a function wrapped in a class:
+% null null\\
+\begin{verbatim}
+class Action:
+    left :: Tree
+    right :: Tree
+    run :: Environment -> Environment
+    check :: (*args) -> (*outputs)
+\end{verbatim}
+
+Each component of the language gets its own action, and the interface for each action is strictly the same. This allows me to easily extend the language, simply by adding new actions. Each action has a reference to the left and right subtree of its parent node. Execution is done top-down: before an action executes itself, it does the left action and the right action. So, the run algorithm looks like:
+
+\begin{verbatim}
+run(envmonad):
+    envmonad >> left action >> right action
+    get any output
+    check the arguments for the action
+    do the action
+\end{verbatim}
+
+Since actions are kept in classes, I can use inheritance to create the idea of typeclasses. I'll make the \verb|Action| class generic, and then have other actions inherit from it. For example, the \verb|ArithmeticAction| will implement the \verb|check| method so that it make sures the left and right operands are numbers. Then the actions for addition, multiplication, etc. will inherit from Arithmetic and will be able to use the specific check method. This also means I can do type checks on actions and 
+\\
+\end{document}
