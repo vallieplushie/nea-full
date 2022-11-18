@@ -1,4 +1,4 @@
-from calculator import Lilac
+from lilac import Lilac
 
 if __name__=='__main__':
-    Lilac.run_prompt()
+    Lilac.start_prompt()

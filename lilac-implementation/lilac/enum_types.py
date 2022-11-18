@@ -1,4 +1,4 @@
-from . import *
+# from . import *
 from enum import Enum, auto
 
 
@@ -7,6 +7,7 @@ class TokenType(Enum):
     COLON = auto()
     ARROW = auto()
     SPACE = auto()
+    SEMI_COLON = auto()
     NEW_LINE = auto()
     LEFT_PAREN = auto()
     RIGHT_PAREN = auto()
@@ -18,6 +19,16 @@ class TokenType(Enum):
     DIV = auto()
     MOD = auto()
 
+    OR = auto()
+    AND = auto()
+    NOT = auto()
+    EQUAL = auto()
+    LESS = auto()
+    LESS_EQUAL = auto()
+    GREATER = auto()
+    GREATER_EQUAL = auto()
+    NOT_EQUAL = auto()
+
     PIPE = auto()
     QUESTION = auto()
 
@@ -26,8 +37,7 @@ class TokenType(Enum):
     IDENTIFIER = auto()
     TRUE = auto()
     FALSE = auto()
+    IN = auto()
 
     EOF = auto()
 
-class ErrorType(Enum):
-    SyntaxError = 'SyntaxError'

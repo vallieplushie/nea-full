@@ -1,35 +1,5 @@
-from enum import Enum, auto
-
-class Keys(Enum):
-    SYMB = 1
-    PREC = 2
-
-
-class Operators:
-    PLUS = {Keys.SYMB: '+', Keys.PREC: 3}
-    MINUS = {Keys.SYMB: '-', Keys.PREC: 2}
-    STAR = {Keys.SYMB: '*', Keys.PREC: 4}
-    SLASH = {Keys.SYMB: '/', Keys.PREC: 5}
-    CARET = {Keys.SYMB: '^', Keys.PREC: 6}
-    ASSIGN = {Keys.SYMB: ':', Keys.PREC: 1}
-    TERMINATOR = {Keys.SYMB: ';', Keys.PREC: 0}
-    LPAREN = auto()
-    RPAREN = auto()
-
-
-OPERATORS= {
-        ':': 0, 
-        ';': 1, 
-        '-': 2, 
-        '+': 3, 
-        '*': 4,
-        '/': 5,
-        '^': 6,
-        }
-
-
 class Tree:
-    def __init__(self, data, action, left=None, right=None):
+    def __init__(self, data, action, left=None, right=None) -> None:
         self.data = data
         self.left = left
         self.right = right
@@ -38,12 +8,12 @@ class Tree:
         self.action.left = self.left
         self.action.right = self.right
 
-    def __str__(self):
+    def __str__(self) -> str:
         if self.is_leaf():
             return f'{self.data}'
         return f"({self.data}, left:{self.left}, right:{self.right})"
 
-    def post_order(self):
+    def post_order(self) -> str:
         string = ''
         if not self.is_leaf():
             string += self.left.post_order()
@@ -51,6 +21,26 @@ class Tree:
             string += self.data
         else:
             string = self.data
+        return string
+
+    def post_order_list(self):
+        out_list = []
+        if not self.is_leaf():
+            out_list += self.left.post_order_list()
+            out_list += self.right.post_order_list()
+            out_list += self.data
+        else:
+            out_list = [self.data]
+        return out_list
+
+    def in_order(self):
+        string = f''
+        if not self.is_leaf():
+            string += f'({self.left.in_order()}'
+            string += self.data.lexeme
+            string += f'{self.right.in_order()})'
+        else:
+            string = self.data.lexeme
         return string
 
     def is_leaf(self):
@@ -137,10 +127,10 @@ class Stack:
         def inner_pop(env):
             val = env.stackmonad.stack.top.value
             env.stackmonad.stack.top = env.stackmonad.stack.top.next
-
-            if isinstance(val, str):
+            
+            if val.type is TokenType.IDENTIFIER:
                 try:
-                    output = checkenv.env.table[val]
+                    output = checkenv.env.table[val.lexeme]
                     checkenv = EnvMonad(env)
                     checkenv >> output.action
                     output = checkenv.env.stackmonad.stack.value

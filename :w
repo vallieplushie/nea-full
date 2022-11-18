@@ -1,0 +1,44 @@
+from . import * 
+
+class Lilac: 
+    tree_m = TreeMachine()
+    
+    @staticmethod
+    def start_prompt():
+        LICONF.INTERACTIVE_MODE = True
+        print(f'{"-"*6}-| Lilac Interactive |-{"-"*6}')
+        Lilac.run_prompt()
+    
+
+    @staticmethod
+    def run_prompt():
+        """Runs an interactive prompt"""  
+        user_in:str = ''
+        while True:
+            user_in = input(f'<i> ')
+
+            if user_in == 'quit':
+                exit(0)
+
+            scanner = Scanner(user_in)
+            tokens = scanner.scan()
+
+            if LICONF.HAD_ERROR:
+                LICONF.HAD_ERROR = False
+                Lilac.run_prompt()
+
+            tokens_string = [f'{t.type}, {t.lexeme}' for t in scanner.scan()]
+            # print(tokens)
+            # print(f'Tokens: {tokens_string}')
+            tree = Parser.parse(tokens)
+
+            if LICONF.HAD_ERROR:
+                LICONF.HAD_ERROR = False
+                Lilac.run_prompt()
+
+            out = f'Tree: {tree.in_order()}'
+            # print(PrettyPrinter.tree_to_mermaid(tree))
+            # out = Lilac.tree_m.execute(tree) 
+            print(f'<o> {out}') 
+
+
