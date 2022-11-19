@@ -41,4 +41,4 @@ class Grammar:
             }
     operators = bindings.keys()
     unary = [TokenType.NOT, TokenType.MINUS]
-    literal = [TokenType.NUMBER, TokenType.STRING, TokenType.IDENTIFIER]
+    literal = [TokenType.NUMBER, TokenType.STRING, TokenType.TRUE, TokenType.FALSE]

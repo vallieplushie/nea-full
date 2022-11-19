@@ -14,19 +14,10 @@ class Scanner:
         self.start: int = 0
         self.current: int = 0
         self.line: int = 1
-
-    def print_log(func):
-        def wrapper(self, *args):
-            Scanner.iterpointer += 1
-            print(f'{" "*Scanner.iterpointer*4}Doing: {func.__name__}')
-            print(f'{" "*(Scanner.iterpointer*4+2)}Input: {args}')
-            out = func(self, *args)
-            print(f'{" "*(Scanner.iterpointer*4+2)}Output: {out}\n')
-            Scanner.iterpointer -= 1
-            return out
-        return wrapper
     
     # @printlog
+    @StatusHandler.checkerror
+    @StatusHandler.logging('INFO')
     def scan(self) -> list[Token]: 
         while not self.at_end():
             # new token starts where the last one ended 
@@ -41,6 +32,8 @@ class Scanner:
         return self.tokens
     
     # @printlog
+    @StatusHandler.checkerror
+    @StatusHandler.logging('DEBUG')
     def scan_token(self) -> None:
         """Scans a single token by consuming it and checking against combinations"""
         character = self.advance()
@@ -74,9 +67,9 @@ class Scanner:
 
             case '&':
                 if self.match('&'):
-                    self.add_token(TextType.AND)
+                    self.add_token(TokenType.AND)
                 else:
-                    Error.throw(ErrorType.SyntaxError, self.line, 
+                    StatusHandler.throw(ErrorType.SyntaxError, self.line, 
                                 f'Unexpected character {character}')
 
             case '<':
@@ -115,10 +108,12 @@ class Scanner:
                 elif character.isalpha():
                     self.add_identifier()
                 else:
-                    Error.throw(ErrorType.SyntaxError, self.line, 
+                    StatusHandler.throw(ErrorType.SyntaxError, self.line, 
                                 f'Unexpected character {character}')
                     return
 
+    @StatusHandler.checkerror
+    @StatusHandler.logging('DEBUG')
     def clean_tokens(self):
         """Removes unecessary white space and new lines"""
         t = 0
@@ -156,6 +151,7 @@ class Scanner:
                     del self.tokens[t]
 
     # @printlog
+    @StatusHandler.logging('TRACE')
     def at_end(self) -> bool:
         """Checks if we are at the end of the source code"""
         if self.current >= len(self.source): 
@@ -164,6 +160,7 @@ class Scanner:
             return False 
 
     # @printlog
+    @StatusHandler.logging('TRACE')
     def advance(self) -> str:
         """Consumes a character in the string and advances"""
         c = self.source[self.current]
@@ -171,6 +168,7 @@ class Scanner:
         return c
 
     # @printlog
+    @StatusHandler.logging('TRACE')
     def add_token(self, type: TokenType, literal=None) -> None:
         """Adds a token to the list"""
         if type is TokenType.EOF:
@@ -181,6 +179,7 @@ class Scanner:
         self.tokens.append(Token(type, lexeme, self.line, literal))
 
     # @printlog
+    @StatusHandler.logging('TRACE')
     def match(self, character) -> bool:
         """Looks ahead at the next character and consumes it"""
         next = self.peek()
@@ -190,12 +189,14 @@ class Scanner:
         return False
 
     # @printlog
+    @StatusHandler.logging('TRACE')
     def peek(self) -> str:
         """looks at the next character without consuming it"""
         if self.at_end():
             return ''
         return self.source[self.current]
-
+    
+    @StatusHandler.logging('DEBUG')
     def add_comment(self) -> None:
         while True:
             character = self.advance()
@@ -204,6 +205,7 @@ class Scanner:
             else:
                 continue
 
+    @StatusHandler.logging('DEBUG')
     def add_string(self) -> None:
         """Adds a string literal, continues advancing until the string stops"""
         while self.peek() != '"' and not self.at_end():
@@ -212,8 +214,8 @@ class Scanner:
             self.advance()
 
         if self.at_end():
-            Lilac.error(ErrorType.SyntaxError, self.line,
-                        'Unterminated string, did you forget a \'"\'?')
+            StatusHandler.throw(ErrorType.SyntaxError, self.line,
+                        'Unterminated string, did you forget a "?')
             return
 
         self.advance()
@@ -222,6 +224,7 @@ class Scanner:
         self.add_token(TokenType.STRING, value)
 
     # @printlog
+    @StatusHandler.logging('DEBUG')
     def add_number(self) -> None:
         """Adds a number"""
         is_float = 0
@@ -230,7 +233,7 @@ class Scanner:
             if self.peek() == '.':
                 is_float += 1
             if is_float > 1:
-                Lilac.error(ErrorType.SyntaxError, self.line, 
+                StatusHandler.throw(ErrorType.SyntaxError, self.line, 
                             'Incorrect number format, too many periods.')
                 return
             else:
@@ -240,26 +243,28 @@ class Scanner:
         lexeme = self.source[self.start:self.current]
         # store as int or float depending on the type
         if is_float == 0:
-            self.add_token(TokenType.NUMBER, float(lexeme))
-        else:
             self.add_token(TokenType.NUMBER, int(lexeme))
+        else:
+            self.add_token(TokenType.NUMBER, float(lexeme))
 
+    @StatusHandler.logging('TRACE')
     def is_id_char(self, character) -> bool:
         if character.isalpha() or character.isnumeric() or character == '_':
             return True
         return False
 
-
+    @StatusHandler.logging('DEBUG')
     def add_identifier(self) -> None:
         """Adds an identifier token"""
         while self.is_id_char(self.peek()):
             self.advance()
         
         lexeme = self.source[self.start:self.current]
-        if lexeme == 'true':
-            self.add_token(TokenType.TRUE)
-        elif lexeme == 'false':
-            self.add_token(TokenType.FALSE)
-        self.add_token(TokenType.IDENTIFIER)
+        if lexeme == 'True':
+            self.add_token(TokenType.TRUE, True)
+        elif lexeme == 'False':
+            self.add_token(TokenType.FALSE, True)
+        else:
+            self.add_token(TokenType.IDENTIFIER)
 
 

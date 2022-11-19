@@ -6,6 +6,7 @@ class Lilac:
     
     @staticmethod
     def start_prompt():
+        open(LICONF.LOG_PATH, 'w').close()
         LICONF.INTERACTIVE_MODE = True
         print(f'{"- "*6}-| Lilac Interactive |-{" -"*6}')
         print(f'  Type $[q]uit to quit and $[h]elp to get help.\n')
@@ -17,6 +18,7 @@ class Lilac:
         """Runs an interactive prompt"""  
         user_in:str = ''
         while True:
+            Lilac.tree_m.empty_stack()
             user_in = input(f'<i> ')
 
             if user_in[0] == '$':
@@ -32,7 +34,7 @@ class Lilac:
 
             tokens_string = [f'{t.type}, {t.lexeme}' for t in scanner.scan()]
             # print(tokens)
-            # print(f'Tokens: {tokens_string}')
+            print(f'Tokens: {tokens_string}')
             tree = Parser.parse(tokens)
 
             if LICONF.HAD_ERROR:
@@ -40,9 +42,11 @@ class Lilac:
                 Lilac.run_prompt()
 
             out = f'Tree: {tree.in_order()}'
+            out = Lilac.tree_m.execute(tree)
             # print(PrettyPrinter.tree_to_mermaid(tree))
             # out = Lilac.tree_m.execute(tree) 
-            print(f'<o> {out}') 
+            if out != '':
+                print(f'<o> {out}')
     
     @staticmethod
     def do_interactive_command(command: str) -> None:

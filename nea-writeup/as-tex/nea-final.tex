@@ -6,10 +6,21 @@
             citecolor=black, urlcolor=blue]{hyperref}
 \usepackage{amsmath, amssymb}
 \usepackage{xcolor}
+\definecolor{LightGray}{gray}{0.9}
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{verbatim}{Verbatim}{xleftmargin=.2in, frame=single}
 \usepackage{fontspec}
 \setmonofont{JetBrainsMonoNerdFont}[Contextuals=Alternate, Scale=0.8]
+\usepackage{minted}
+\setminted{
+frame=single,
+framesep=2mm,
+fontsize=\footnotesize,
+xleftmargin=0.5in,
+xrightmargin=0.5in,
+linenos,
+}
+% \usepackage{lstlistings}
 \pagenumbering{arabic}
 \pagecolor{white}
 
@@ -32,9 +43,9 @@
 \begin{document}
 
 \maketitle
-
+\newpage
 \tableofcontents
-
+\newpage
 \section{Analysis}\label{sec:analysis}
 \subsection{Introduction}\label{sec:introduction}
 For my A-level project I am going to design and implement a small programming language, called Lilac. In the world of programming languages, there are the big production languages: Python, JavaScript, C++, C\#, etc. While they are the most commonly used languages, they are by no means the only ones. On the outskirts of the field of language design, there are many small languages which seek to either push the boundaries of computation and abstraction, or that have incredibly specific applications (along with, of course, the ones written as jokes). For example, the \verb|Orca| language is a two-dimensional graphical language which is designed for programmatic music production. \verb|Pinecone| was another attempt at creating a light minimal c-style language. And most commonly formats such as \verb|toml| and \verb|yaml| that are used for configuration files lean gently into the most minimal of language. To summarise, wherever there could be an issue with one of the large languages, there are small languages being designed to try to fix it.\\
@@ -101,7 +112,7 @@ Now, the source code is represented as a flat list of tokens. However this list 
   \node[rectangle, draw] (sleep) at (5,-4) {sleep};
 
   \draw[thick] (s) -- (np)
-  	      (s) -- (vp)
+  	           (s) -- (vp)
                (np) -- (det)
                (np) -- (n)
                (vp2) -- (p)
@@ -300,10 +311,10 @@ Lilac Interactive Mode
   >   let ( y: length str )
   >   in ( fn n -> y + n )
 <i> x + f 3
-<e> [Line 1] NameNotDefinedError: The name 'x' does not exist in this scope
+<e> [Line 1] NameUndefinedError: The name 'x' does not exist in this scope
 \end{verbatim}
 \subsubsection{Error Reporting}\label{sec:error-reporting}
-It is crucial that my project implements some kind oferror checking and reporting. There are many errors that a user could make, and each should be differentiated and handled. There needs to be some kind of enumerable which keeps track of all the error types. It will look as follows:\\
+It is crucial that my project implements some kind oferror checking and reporting. There are many errors that a user could make, and each should be differentiated and handled. There needs to be some kind of enumerable which keeps track of all the error types. It will look as follows:
 
 \begin{verbatim}
 enum ErrorType:
@@ -313,9 +324,7 @@ enum ErrorType:
 	TypeError
 \end{verbatim}
 
-gitPass
-
-These will be used in conjunctino with Lilac's \verb|error| method. This will take an error type, a line number, and a message about the error to print.
+These will be used in conjunction with Lilac's \verb|error| method. This will take an error type, a line number, and a message about the error to print. 
 
 \subsection{Stage Two: Lexical Analysis}\label{sec:stage-two-lexical-analysis}
 The lexer is represented by a Lexer class:
@@ -475,6 +484,45 @@ run(envmonad):
     do the action
 \end{verbatim}
 
-Since actions are kept in classes, I can use inheritance to create the idea of typeclasses. I'll make the \verb|Action| class generic, and then have other actions inherit from it. For example, the \verb|ArithmeticAction| will implement the \verb|check| method so that it make sures the left and right operands are numbers. Then the actions for addition, multiplication, etc. will inherit from Arithmetic and will be able to use the specific check method. This also means I can do type checks on actions and 
+Since actions are kept in classes, I can use inheritance to create the idea of typeclasses. I'll make the \verb|Action| class generic, and then have other actions inherit from it. For example, the \verb|ArithmeticAction| will implement the \verb|check| method so that it make sures the left and right operands are numbers. Then the actions for addition, multiplication, etc. will inherit from Arithmetic and will be able to use the specific check method. This also means I can do type checks on actions.
 \\
+
+\section{Implementation}
+\subsection{Context and Overview}
+
+I am using \verb|Python 3.10| and \verb|bash| to implement \verb|Lilac|. The choice of language is crucial, and I considered a few options before settling on Python. In terms of speed, \verb|C++| would be the ideal choice. However, it requires a lot of gritty memory management that is not feasible in the scope of this project. This also eliminated \verb|Rust|, which I briefly considered for its speed and the way Enums and Structs are defined. \verb|Haskell| and \verb|C#|, both of which I know, were considered too. However, each of these is very rigidly in one paradigm, which means that they are not well suited to certain stages of the process. Redesigning the project for one of these would also be unfeasible. So, I turned to Python. Python is well suited to object-oriented programming, but can very easily be used to write in a functional style. This flexibility allows me to adapt my implementation to the specific component I'm writing, while keeping the data I handle in a single form. This does mean I sacrifice on execution speed, but as a proof of concept project this is acceptable.
+
+In addition to this, Python 3.10 has several features that make it particularly useful. It has a powerful pattern-matching 'switch' statement that will be useful when I have large conditionals.
+
+\subsubsection{Language Choice}
+\subsubsection{Project Strcuture}
+\subsection{Project Walkthrough}
+
+\begin{minted}{python}
+@staticmethod 
+def checkerror(func):
+    """Decorator which checks if there has been an error."""
+    def wrapper(*args):
+        if LICONF.HAD_ERROR:
+            return
+        else:
+            out = func(*args)
+            return out
+    return wrapper
+\end{minted}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \end{document}

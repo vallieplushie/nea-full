@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nd}{@staticmethod}
+\PYG{k}{def} \PYG{n+nf}{checkerror}\PYG{p}{(}\PYG{n}{func}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Decorator which checks if there has been an error.\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{def} \PYG{n+nf}{wrapper}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{HAD\PYGZus{}ERROR}\PYG{p}{:}
+            \PYG{k}{return}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{out} \PYG{o}{=} \PYG{n}{func}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{)}
+            \PYG{k}{return} \PYG{n}{out}
+    \PYG{k}{return} \PYG{n}{wrapper}
+\end{Verbatim}
