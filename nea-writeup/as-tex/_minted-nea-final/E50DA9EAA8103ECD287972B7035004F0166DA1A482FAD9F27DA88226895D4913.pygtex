@@ -1,0 +1,33 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k}{class} \PYG{n+nc}{PrettyPrinter}\PYG{p}{:}
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{tree\PYGZus{}to\PYGZus{}mermaid}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{n}{output} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}graph TB}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+        \PYG{n}{output} \PYG{o}{+=} \PYG{n}{PrettyPrinter}\PYG{o}{.}\PYG{n}{mermaid\PYGZus{}string}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{output}
+
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{mermaid\PYGZus{}string}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{n}{output} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{tree}\PYG{o}{.}\PYG{n}{is\PYGZus{}leaf}\PYG{p}{():}
+            \PYG{n}{output} \PYG{o}{+=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb}{hash}\PYG{p}{(}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{data}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{[\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZdq{}] \PYGZhy{}\PYGZhy{}\PYGZgt{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb}{hash}\PYG{p}{(}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{right}\PYG{o}{.}\PYG{n}{data}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{[\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{right}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZdq{}]}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+            \PYG{n}{output} \PYG{o}{+=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb}{hash}\PYG{p}{(}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{data}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{[\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZdq{}] \PYGZhy{}\PYGZhy{}\PYGZgt{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb}{hash}\PYG{p}{(}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{left}\PYG{o}{.}\PYG{n}{data}\PYG{p}{)}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{[\PYGZdq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{left}\PYG{o}{.}\PYG{n}{data}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZdq{}]}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+            \PYG{n}{output} \PYG{o}{+=} \PYG{n}{PrettyPrinter}\PYG{o}{.}\PYG{n}{mermaid\PYGZus{}string}\PYG{p}{(}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{left}\PYG{p}{)}
+            \PYG{n}{output} \PYG{o}{+=} \PYG{n}{PrettyPrinter}\PYG{o}{.}\PYG{n}{mermaid\PYGZus{}string}\PYG{p}{(}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{right}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{output}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{print\PYGZus{}args}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{n}{output} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+        \PYG{k}{for} \PYG{n}{a} \PYG{o+ow}{in} \PYG{n}{args}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n+nb}{isinstance}\PYG{p}{(}\PYG{n}{a}\PYG{p}{,} \PYG{n+nb}{list}\PYG{p}{):}
+                \PYG{n}{output} \PYG{o}{+=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+si}{\PYGZob{}}\PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)} \PYG{k}{for} \PYG{n}{b} \PYG{o+ow}{in} \PYG{n}{a}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n}{output} \PYG{o}{+=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{a}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+        \PYG{k}{return} \PYG{n}{output}
+
+
+\end{Verbatim}

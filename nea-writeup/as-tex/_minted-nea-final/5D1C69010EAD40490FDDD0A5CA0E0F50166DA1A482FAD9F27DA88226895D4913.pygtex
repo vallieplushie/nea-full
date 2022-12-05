@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Lilac Interpreter Module.}
+
+\PYG{l+s+sd}{This module exports all the necessary functions and classes used for execution of the Lilac language.}
+
+\PYG{l+s+sd}{Exports:}
+\PYG{l+s+sd}{    Action \PYGZhy{}\PYGZhy{} Generic action used by the EnvMonad.}
+\PYG{l+s+sd}{        ArithmeticAction \PYGZhy{}\PYGZhy{} Action representing arithmetic.}
+\PYG{l+s+sd}{            AdditionAction \PYGZhy{}\PYGZhy{} Action representing addition.}
+\PYG{l+s+sd}{        LiteralAction \PYGZhy{}\PYGZhy{} Action representing a literal or identifier.}
+\PYG{l+s+sd}{    EnvMonad \PYGZhy{}\PYGZhy{} Monadic wrapper around an Environment.}
+\PYG{l+s+sd}{    Environment \PYGZhy{}\PYGZhy{} Data holding class to keep track of program state.}
+\PYG{l+s+sd}{    Error \PYGZhy{}\PYGZhy{} Error handling class.}
+\PYG{l+s+sd}{    ErrorType \PYGZhy{}\PYGZhy{} Enum type represents}
+\PYG{l+s+sd}{    Grammar \PYGZhy{}\PYGZhy{} Class holding all the rules and classifications of the language.}
+\PYG{l+s+sd}{    Lilac \PYGZhy{}\PYGZhy{} Driver class.}
+\PYG{l+s+sd}{    Node \PYGZhy{}\PYGZhy{} Used to define the Stack.}
+\PYG{l+s+sd}{    Parser \PYGZhy{}\PYGZhy{} Handles all parsing behavior.}
+\PYG{l+s+sd}{    PrettyPrinter \PYGZhy{}\PYGZhy{} Exports functions to print the contents of the program state in readable formats.}
+\PYG{l+s+sd}{    Scanner \PYGZhy{}\PYGZhy{} Handles all scanning behavior.}
+\PYG{l+s+sd}{    Stack \PYGZhy{}\PYGZhy{} Call stack data structure.}
+\PYG{l+s+sd}{    StackMonad \PYGZhy{}\PYGZhy{} Mondaic wrapper around Stack.}
+\PYG{l+s+sd}{    Token \PYGZhy{}\PYGZhy{} Class representing a lexical token.}
+\PYG{l+s+sd}{    TokenType \PYGZhy{}\PYGZhy{} Enum representing the kinds of textual tokens.}
+\PYG{l+s+sd}{    Tree \PYGZhy{}\PYGZhy{} Recursively defined generic tree structure for parsing.}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k+kn}{from} \PYG{n+nn}{.config} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.error\PYGZus{}system} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.mermaid\PYGZus{}printer} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.token\PYGZus{}type} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.grammar} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.tokens} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.tree} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.stack} \PYG{k+kn}{import} \PYG{n}{Stack}\PYG{p}{,} \PYG{n}{StackMonad}
+\PYG{k+kn}{from} \PYG{n+nn}{.environment} \PYG{k+kn}{import} \PYG{n}{Environment}\PYG{p}{,} \PYG{n}{EnvMonad}
+
+\PYG{k+kn}{from} \PYG{n+nn}{.tree\PYGZus{}actions} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.tree\PYGZus{}machine} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k+kn}{from} \PYG{n+nn}{.scanner} \PYG{k+kn}{import} \PYG{o}{*} 
+\PYG{k+kn}{from} \PYG{n+nn}{.parser} \PYG{k+kn}{import} \PYG{o}{*}
+\PYG{k+kn}{from} \PYG{n+nn}{.driver} \PYG{k+kn}{import} \PYG{o}{*}
+\end{Verbatim}

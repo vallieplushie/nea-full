@@ -1,0 +1,9 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{decorator}\PYG{p}{(}\PYG{n}{function}\PYG{p}{):}
+	\PYG{k}{def} \PYG{n+nf}{wrapper}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{):}
+		\PYG{c+c1}{\PYGZsh{} Do thhings before}
+		\PYG{n}{out} \PYG{o}{=} \PYG{n}{function}\PYG{p}{(}\PYG{o}{*}\PYG{n}{args}\PYG{p}{):}
+		\PYG{c+c1}{\PYGZsh{} Do things after}
+		\PYG{k}{return} \PYG{n}{out}
+	\PYG{k}{return} \PYG{n}{wrapper}
+\end{Verbatim}

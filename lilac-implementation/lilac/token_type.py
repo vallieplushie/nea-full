@@ -1,7 +1,6 @@
 # from . import *
 from enum import Enum, auto
 
-
 class TokenType(Enum):
     """Enumerates the possible types of tokens"""
     COLON = auto()

@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.16)  19 NOV 2022 11:27
+This is LuaHBTeX, Version 1.15.0 (TeX Live 2022)  (format=lualatex 2022.10.16)  5 DEC 2022 12:42
  system commands enabled.
  file:line:error style messages enabled.
 **nea-final.tex
@@ -48,20 +48,21 @@ Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
 Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
 . L3 programming layer <2022-02-24>
 Inserting `tracingstacklevels' at position 1 in `input_level_string'.
-(/usr/local/texlive/2022/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
-(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 luaotfload | db : Font names database loaded from /Users/valerie/Library/texlive
 /2022/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz)
 \c@part=\count183
-\c@section=\count184
-\c@subsection=\count185
-\c@subsubsection=\count186
-\c@paragraph=\count187
-\c@subparagraph=\count188
-\c@figure=\count189
-\c@table=\count190
+\c@chapter=\count184
+\c@section=\count185
+\c@subsection=\count186
+\c@subsubsection=\count187
+\c@paragraph=\count188
+\c@subparagraph=\count189
+\c@figure=\count190
+\c@table=\count191
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen137
@@ -79,9 +80,9 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/local/texlive/2022/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
-\Gm@cnth=\count191
-\Gm@cntv=\count192
-\c@Gm@tempcnt=\count193
+\Gm@cnth=\count192
+\Gm@cntv=\count193
+\c@Gm@tempcnt=\count194
 \Gm@bindingoffset=\dimen138
 \Gm@wd@mp=\dimen139
 \Gm@odd@mp=\dimen140
@@ -132,8 +133,8 @@ Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen146
-\Hy@linkcounter=\count194
-\Hy@pagecounter=\count195
+\Hy@linkcounter=\count195
+\Hy@pagecounter=\count196
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
@@ -144,7 +145,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count196
+\Hy@SavedSpaceFactor=\count197
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
@@ -157,7 +158,7 @@ Package hyperref Info: Plain pages OFF on input line 4152.
 Package hyperref Info: Backreferencing OFF on input line 4157.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4390.
-\c@Hy@tempcnt=\count197
+\c@Hy@tempcnt=\count198
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
@@ -173,7 +174,7 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count198
+\Fld@menulength=\count199
 \Field@Width=\dimen148
 \Fld@charsize=\dimen149
 Package hyperref Info: Hyper figures OFF on input line 6027.
@@ -190,9 +191,9 @@ LaTeX Info: Redefining \pageref on input line 6101.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count199
-\c@Item=\count266
-\c@Hfootnote=\count267
+\Hy@abspage=\count266
+\c@Item=\count267
+\c@Hfootnote=\count268
 )
 Package hyperref Info: Driver (autodetected): hluatex.
 
@@ -208,8 +209,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count268
-\c@bookmark@seq@number=\count269
+\Fld@listcount=\count269
+\c@bookmark@seq@number=\count270
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
@@ -221,9 +222,21 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 86.
 )
 \Hy@SectionHShift=\skip49
-) (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/usr/local/texlive/2022/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2021/07/05 v2.14 Sectioning titles
+\ttl@box=\box50
+\beforetitleunit=\skip50
+\aftertitleunit=\skip51
+\ttl@plus=\dimen150
+\ttl@minus=\dimen151
+\ttl@toksa=\toks19
+\titlewidth=\dimen152
+\titlewidthlast=\dimen153
+\titlewidthfirst=\dimen154
+)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2021/10/15 v2.17l AMS math features
-\@mathmargin=\skip50
+\@mathmargin=\skip52
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -231,51 +244,51 @@ Package: amstext 2021/08/26 v2.01 AMS text
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks19
-\ex@=\dimen150
+\@emptytoks=\toks20
+\ex@=\dimen155
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen151
+\pmbraise@=\dimen156
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count270
+\inf@bad=\count271
 LaTeX Info: Redefining \frac on input line 236.
-\uproot@=\count271
-\leftroot@=\count272
+\uproot@=\count272
+\leftroot@=\count273
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count273
-\DOTSCASE@=\count274
+\classnum@=\count274
+\DOTSCASE@=\count275
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box50
-\strutbox@=\box51
-\big@size=\dimen152
+\Mathstrutbox@=\box51
+\strutbox@=\box52
+\big@size=\dimen157
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count275
-\c@MaxMatrixCols=\count276
+\macc@depth=\count276
+\c@MaxMatrixCols=\count277
 \dotsspace@=\muskip17
-\c@parentequation=\count277
-\dspbrk@lvl=\count278
-\tag@help=\toks20
-\row@=\count279
-\column@=\count280
-\maxfields@=\count281
-\andhelp@=\toks21
-\eqnshift@=\dimen153
-\alignsep@=\dimen154
-\tagshift@=\dimen155
-\tagwidth@=\dimen156
-\totwidth@=\dimen157
-\lineht@=\dimen158
-\@envbody=\toks22
-\multlinegap=\skip51
-\multlinetaggap=\skip52
-\mathdisplay@stack=\toks23
+\c@parentequation=\count278
+\dspbrk@lvl=\count279
+\tag@help=\toks21
+\row@=\count280
+\column@=\count281
+\maxfields@=\count282
+\andhelp@=\toks22
+\eqnshift@=\dimen158
+\alignsep@=\dimen159
+\tagshift@=\dimen160
+\tagwidth@=\dimen161
+\totwidth@=\dimen162
+\lineht@=\dimen163
+\@envbody=\toks23
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2938.
 LaTeX Info: Redefining \] on input line 2939.
 )
@@ -313,12 +326,47 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2021/12/21 4.1b verbatim text (tvz,hv)
-\FV@CodeLineNo=\count282
+\FV@CodeLineNo=\count283
 \FV@InFile=\read2
-\FV@TabBox=\box52
-\c@FancyVerbLine=\count283
-\FV@StepNumber=\count284
+\FV@TabBox=\box53
+\c@FancyVerbLine=\count284
+\FV@StepNumber=\count285
 \FV@OutFile=\write3
+)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2020/01/15 v2.11c `tabularx' package (DPC)
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/tools/array.sty
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
+\col@sep=\dimen164
+\ar@mcellbox=\box54
+\extrarowheight=\dimen165
+\NC@list=\toks25
+\extratabsurround=\skip55
+\backup@length=\skip56
+\ar@cellbox=\box55
+)
+\TX@col@width=\dimen166
+\TX@old@table=\dimen167
+\TX@old@col=\dimen168
+\TX@target=\dimen169
+\TX@delta=\dimen170
+\TX@cols=\count286
+\TX@ftn=\toks26
+)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/cprotect/cprotect.sty
+Package: cprotect 2011/01/27 v1.0e (Bruno Le Floch)
+
+(/usr/local/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/bigfoot/suffix.sty
+Package: suffix 2006/07/15 1.5a Variant command support
+)
+\CPT@WriteOut=\write4
+\c@CPT@WriteCount=\count287
+\c@CPT@numB=\count288
+\CPT@commandatend@toks=\toks27
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.sty
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -327,8 +375,8 @@ Package: expl3 2022-02-24 L3 programming layer (loader)
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/l3backend/l3backend-luatex.def
 File: l3backend-luatex.def 2022-02-07 L3 backend support: PDF output (LuaTeX)
-\l__color_backend_stack_int=\count285
-\l__pdf_internal_box=\box53
+\l__color_backend_stack_int=\count289
+\l__pdf_internal_box=\box56
 ))
 Package: xparse 2022-01-12 L3 Experimental document command parser
 )
@@ -337,20 +385,20 @@ Lua module: fontspec 2022/01/15 2.8a Font selection for XeLaTeX and LuaLaTeX (/
 usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec-luatex.sty
 Package: fontspec-luatex 2022/01/15 v2.8a Font selection for XeLaTeX and LuaLaT
 eX
-\l__fontspec_script_int=\count286
-\l__fontspec_language_int=\count287
-\l__fontspec_strnum_int=\count288
-\l__fontspec_tmp_int=\count289
-\l__fontspec_tmpa_int=\count290
-\l__fontspec_tmpb_int=\count291
-\l__fontspec_tmpc_int=\count292
-\l__fontspec_em_int=\count293
-\l__fontspec_emdef_int=\count294
-\l__fontspec_strong_int=\count295
-\l__fontspec_strongdef_int=\count296
-\l__fontspec_tmpa_dim=\dimen159
-\l__fontspec_tmpb_dim=\dimen160
-\l__fontspec_tmpc_dim=\dimen161
+\l__fontspec_script_int=\count290
+\l__fontspec_language_int=\count291
+\l__fontspec_strnum_int=\count292
+\l__fontspec_tmp_int=\count293
+\l__fontspec_tmpa_int=\count294
+\l__fontspec_tmpb_int=\count295
+\l__fontspec_tmpc_int=\count296
+\l__fontspec_em_int=\count297
+\l__fontspec_emdef_int=\count298
+\l__fontspec_strong_int=\count299
+\l__fontspec_strongdef_int=\count300
+\l__fontspec_tmpa_dim=\dimen171
+\l__fontspec_tmpb_dim=\dimen172
+\l__fontspec_tmpc_dim=\dimen173
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
@@ -358,13 +406,47 @@ Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fontspec/fontspec.cfg)))
 luaotfload | cache : Lookup cache loaded from /Users/valerie/Library/texlive/202
 2/texmf-var/luatex-cache/generic/names/luaotfload-lookup-cache.luc.
-luaotfload | aux : font no 23 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 19 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : font no 24 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 20 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : font no 25 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 21 (nil) does not define feature smcp for script latn
  with language dflt
-luaotfload | aux : font no 26 (nil) does not define feature smcp for script latn
+luaotfload | aux : font no 22 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: Font family 'LatoLight(0)' created for font 'Lato
+(fontspec)             Light' with options [Ligatures=TeX,BoldFont={Lato
+(fontspec)             Regular},ItalicFont={Lato Light
+(fontspec)             Italic},BoldItalicFont={Lato Italic}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"LatoLight:mode=node;script=latn;language=dflt;+tlig;
+"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"LatoRegular:mode=node;script=latn;language=dflt;+tli
+g;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"LatoLightItalic:mode=node;script=latn;language=dflt;
++tlig;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"LatoItalic:mode=node;script=latn;language=dflt;+tlig
+;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
+luaotfload | aux : font no 30 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 31 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 32 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 33 (nil) does not define feature smcp for script latn
  with language dflt
 
 Package fontspec Info: Font family 'JetBrainsMonoNerdFont(0)' created for font
@@ -412,6 +494,34 @@ n;language=dflt;+calt;"
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
 (fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
+luaotfload | aux : font no 20 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 40 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 22 (nil) does not define feature smcp for script latn
+ with language dflt
+luaotfload | aux : font no 41 (nil) does not define feature smcp for script latn
+ with language dflt
+
+Package fontspec Info: Font family 'Lato(0)' created for font 'Lato' with
+(fontspec)             options [].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"Lato:mode=node;script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->"Lato/B:mode=node;script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->"Lato/I:mode=node;script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->"Lato/BI:mode=node;script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/minted/minted.sty
 Package: minted 2021/12/24 v2.6 Yet another Pygments shim for LaTeX
@@ -419,12 +529,9 @@ Package: minted 2021/12/24 v2.6 Yet another Pygments shim for LaTeX
 (/usr/local/texlive/2022/texmf-dist/tex/latex/fvextra/fvextra.sty
 Package: fvextra 2019/02/04 v1.4 fvextra - extensions and patches for fancyvrb
 
-(/usr/local/texlive/2022/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
-)
 (/usr/local/texlive/2022/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count297
+\etb@tempcnta=\count301
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
@@ -435,57 +542,57 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/latex/lineno/lineno.sty
 Package: lineno 2005/11/02 line numbers on paragraphs v4.41
-\linenopenalty=\count298
-\output=\toks24
-\linenoprevgraf=\count299
-\linenumbersep=\dimen162
-\linenumberwidth=\dimen163
-\c@linenumber=\count300
-\c@pagewiselinenumber=\count301
-\c@LN@truepage=\count302
-\c@internallinenumber=\count303
-\c@internallinenumbers=\count304
-\quotelinenumbersep=\dimen164
-\bframerule=\dimen165
-\bframesep=\dimen166
-\bframebox=\box54
+\linenopenalty=\count302
+\output=\toks28
+\linenoprevgraf=\count303
+\linenumbersep=\dimen174
+\linenumberwidth=\dimen175
+\c@linenumber=\count304
+\c@pagewiselinenumber=\count305
+\c@LN@truepage=\count306
+\c@internallinenumber=\count307
+\c@internallinenumbers=\count308
+\quotelinenumbersep=\dimen176
+\bframerule=\dimen177
+\bframesep=\dimen178
+\bframebox=\box57
 LaTeX Info: Redefining \\ on input line 3056.
 )
-\c@FV@TrueTabGroupLevel=\count305
-\c@FV@TrueTabCounter=\count306
-\FV@TabBox@Group=\box55
-\FV@TmpLength=\skip53
-\c@FV@HighlightLinesStart=\count307
-\c@FV@HighlightLinesStop=\count308
-\FV@LoopCount=\count309
-\FV@NCharsBox=\box56
-\FV@BreakIndent=\dimen167
-\FV@BreakIndentNChars=\count310
-\FV@BreakSymbolSepLeft=\dimen168
-\FV@BreakSymbolSepLeftNChars=\count311
-\FV@BreakSymbolSepRight=\dimen169
-\FV@BreakSymbolSepRightNChars=\count312
-\FV@BreakSymbolIndentLeft=\dimen170
-\FV@BreakSymbolIndentLeftNChars=\count313
-\FV@BreakSymbolIndentRight=\dimen171
-\FV@BreakSymbolIndentRightNChars=\count314
-\c@FancyVerbLineBreakLast=\count315
-\FV@LineBox=\box57
-\FV@LineIndentBox=\box58
-\FV@LineWidth=\dimen172
+\c@FV@TrueTabGroupLevel=\count309
+\c@FV@TrueTabCounter=\count310
+\FV@TabBox@Group=\box58
+\FV@TmpLength=\skip57
+\c@FV@HighlightLinesStart=\count311
+\c@FV@HighlightLinesStop=\count312
+\FV@LoopCount=\count313
+\FV@NCharsBox=\box59
+\FV@BreakIndent=\dimen179
+\FV@BreakIndentNChars=\count314
+\FV@BreakSymbolSepLeft=\dimen180
+\FV@BreakSymbolSepLeftNChars=\count315
+\FV@BreakSymbolSepRight=\dimen181
+\FV@BreakSymbolSepRightNChars=\count316
+\FV@BreakSymbolIndentLeft=\dimen182
+\FV@BreakSymbolIndentLeftNChars=\count317
+\FV@BreakSymbolIndentRight=\dimen183
+\FV@BreakSymbolIndentRightNChars=\count318
+\c@FancyVerbLineBreakLast=\count319
+\FV@LineBox=\box60
+\FV@LineIndentBox=\box61
+\FV@LineWidth=\dimen184
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count316
-\calc@Bcount=\count317
-\calc@Adimen=\dimen173
-\calc@Bdimen=\dimen174
-\calc@Askip=\skip54
-\calc@Bskip=\skip55
+\calc@Acount=\count320
+\calc@Bcount=\count321
+\calc@Adimen=\dimen185
+\calc@Bdimen=\dimen186
+\calc@Askip=\skip58
+\calc@Bskip=\skip59
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count318
-\calc@Cskip=\skip56
+\calc@Ccount=\count322
+\calc@Cskip=\skip60
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/tools/shellesc.sty
 Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
@@ -507,34 +614,34 @@ runsystem(rm -- "nea-final.w18")...executed
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/xstring/xstring.sty
 (/usr/local/texlive/2022/texmf-dist/tex/generic/xstring/xstring.tex
-\integerpart=\count319
-\decimalpart=\count320
+\integerpart=\count323
+\decimalpart=\count324
 )
 Package: xstring 2021/07/21 v1.84 String manipulations (CT)
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip57
-\fb@frw=\dimen175
-\fb@frh=\dimen176
-\FrameRule=\dimen177
-\FrameSep=\dimen178
+\OuterFrameSep=\skip61
+\fb@frw=\dimen187
+\fb@frh=\dimen188
+\FrameRule=\dimen189
+\FrameSep=\dimen190
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count321
-\float@exts=\toks25
-\float@box=\box59
-\@float@everytoks=\toks26
-\@floatcapt=\box60
+\c@float@type=\count325
+\float@exts=\toks29
+\float@box=\box62
+\@float@everytoks=\toks30
+\@floatcapt=\box63
 )
 \minted@appexistsfile=\read3
-\minted@bgbox=\box61
-\minted@code=\write4
-\c@minted@FancyVerbLineTemp=\count322
-\c@minted@pygmentizecounter=\count323
-\@float@every@listing=\toks27
-\c@listing=\count324
+\minted@bgbox=\box64
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count326
+\c@minted@pygmentizecounter=\count327
+\@float@every@listing=\toks31
+\c@listing=\count328
 )
 runsystem(mkdir -p _minted-nea-final)...executed
 
@@ -543,14 +650,14 @@ runsystem(mkdir -p _minted-nea-final)...executed
 (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
 x
-\pgfutil@everybye=\toks28
-\pgfutil@tempdima=\dimen179
-\pgfutil@tempdimb=\dimen180
+\pgfutil@everybye=\toks32
+\pgfutil@tempdima=\dimen191
+\pgfutil@tempdimb=\dimen192
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
 sts.tex))
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box62
+\pgfutil@abb=\box65
 ) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
@@ -572,40 +679,40 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: luatex.def on input line 107.
 )
-\Gin@req@height=\dimen181
-\Gin@req@width=\dimen182
+\Gin@req@height=\dimen193
+\Gin@req@width=\dimen194
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks29
-\pgfkeys@temptoks=\toks30
+\pgfkeys@pathtoks=\toks33
+\pgfkeys@temptoks=\toks34
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
 ode.tex
-\pgfkeys@tmptoks=\toks31
+\pgfkeys@tmptoks=\toks35
 ))
-\pgf@x=\dimen183
-\pgf@y=\dimen184
-\pgf@xa=\dimen185
-\pgf@ya=\dimen186
-\pgf@xb=\dimen187
-\pgf@yb=\dimen188
-\pgf@xc=\dimen189
-\pgf@yc=\dimen190
-\pgf@xd=\dimen191
-\pgf@yd=\dimen192
-\w@pgf@writea=\write5
+\pgf@x=\dimen195
+\pgf@y=\dimen196
+\pgf@xa=\dimen197
+\pgf@ya=\dimen198
+\pgf@xb=\dimen199
+\pgf@yb=\dimen256
+\pgf@xc=\dimen257
+\pgf@yc=\dimen258
+\pgf@xd=\dimen259
+\pgf@yd=\dimen260
+\w@pgf@writea=\write6
 \r@pgf@reada=\read4
-\c@pgf@counta=\count325
-\c@pgf@countb=\count326
-\c@pgf@countc=\count327
-\c@pgf@countd=\count328
-\t@pgf@toka=\toks32
-\t@pgf@tokb=\toks33
-\t@pgf@tokc=\toks34
-\pgf@sys@id@count=\count329
+\c@pgf@counta=\count329
+\c@pgf@countb=\count330
+\c@pgf@countc=\count331
+\c@pgf@countd=\count332
+\t@pgf@toka=\toks36
+\t@pgf@tokb=\toks37
+\t@pgf@tokc=\toks38
+\pgf@sys@id@count=\count333
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
@@ -623,8 +730,8 @@ File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
 code.tex
 File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count330
-\pgfsyssoftpath@bigbuffer@items=\count331
+\pgfsyssoftpath@smallbuffer@items=\count334
+\pgfsyssoftpath@bigbuffer@items=\count335
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
 code.tex
@@ -636,12 +743,12 @@ Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen193
-\pgfmath@count=\count332
-\pgfmath@box=\box63
-\pgfmath@toks=\toks35
-\pgfmath@stack@operand=\toks36
-\pgfmath@stack@operation=\toks37
+\pgfmath@dimen=\dimen261
+\pgfmath@count=\count336
+\pgfmath@box=\box66
+\pgfmath@toks=\toks39
+\pgfmath@stack@operand=\toks40
+\pgfmath@stack@operation=\toks41
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
 tex
@@ -662,57 +769,57 @@ code.tex)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
 erarithmetics.code.tex)))
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count333
+\c@pgfmathroundto@lastzeros=\count337
 )) (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
 de.tex
 File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@picminx=\dimen194
-\pgf@picmaxx=\dimen195
-\pgf@picminy=\dimen196
-\pgf@picmaxy=\dimen197
-\pgf@pathminx=\dimen198
-\pgf@pathmaxx=\dimen199
-\pgf@pathminy=\dimen256
-\pgf@pathmaxy=\dimen257
-\pgf@xx=\dimen258
-\pgf@xy=\dimen259
-\pgf@yx=\dimen260
-\pgf@yy=\dimen261
-\pgf@zx=\dimen262
-\pgf@zy=\dimen263
+\pgf@picminx=\dimen262
+\pgf@picmaxx=\dimen263
+\pgf@picminy=\dimen264
+\pgf@picmaxy=\dimen265
+\pgf@pathminx=\dimen266
+\pgf@pathmaxx=\dimen267
+\pgf@pathminy=\dimen268
+\pgf@pathmaxy=\dimen269
+\pgf@xx=\dimen270
+\pgf@xy=\dimen271
+\pgf@yx=\dimen272
+\pgf@yy=\dimen273
+\pgf@zx=\dimen274
+\pgf@zy=\dimen275
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
 ruct.code.tex
 File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@path@lastx=\dimen264
-\pgf@path@lasty=\dimen265
+\pgf@path@lastx=\dimen276
+\pgf@path@lasty=\dimen277
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
 .code.tex
 File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@shorten@end@additional=\dimen266
-\pgf@shorten@start@additional=\dimen267
+\pgf@shorten@end@additional=\dimen278
+\pgf@shorten@start@additional=\dimen279
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
 de.tex
 File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfpic=\box64
-\pgf@hbox=\box65
-\pgf@layerbox@main=\box66
-\pgf@picture@serial@count=\count334
+\pgfpic=\box67
+\pgf@hbox=\box68
+\pgf@layerbox@main=\box69
+\pgf@picture@serial@count=\count338
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
 ate.code.tex
 File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgflinewidth=\dimen268
+\pgflinewidth=\dimen280
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
 ations.code.tex
 File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@pt@x=\dimen269
-\pgf@pt@y=\dimen270
-\pgf@pt@temp=\dimen271
+\pgf@pt@x=\dimen281
+\pgf@pt@y=\dimen282
+\pgf@pt@temp=\dimen283
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
 e.tex
@@ -729,14 +836,14 @@ File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
 de.tex
 File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfarrowsep=\dimen272
+\pgfarrowsep=\dimen284
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
 e.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@max=\dimen273
-\pgf@sys@shading@range@num=\count335
-\pgf@shadingcount=\count336
+\pgf@max=\dimen285
+\pgf@sys@shading@range@num=\count339
+\pgf@shadingcount=\count340
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
 e.tex
@@ -745,7 +852,7 @@ File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
 code.tex
 File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfexternal@startupbox=\box67
+\pgfexternal@startupbox=\box70
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
 de.tex
@@ -766,7 +873,7 @@ File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
 e.tex
 File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodeparttextbox=\box68
+\pgfnodeparttextbox=\box71
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
 tex
@@ -775,8 +882,8 @@ File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -0-65.sty
 Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@nodesepstart=\dimen274
-\pgf@nodesepend=\dimen275
+\pgf@nodesepstart=\dimen286
+\pgf@nodesepend=\dimen287
 )
 (/usr/local/texlive/2022/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
 -1-18.sty
@@ -791,10 +898,10 @@ Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
 Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen276
-\pgffor@skip=\dimen277
-\pgffor@stack=\toks38
-\pgffor@toks=\toks39
+\pgffor@iter=\dimen288
+\pgffor@skip=\dimen289
+\pgffor@stack=\toks42
+\pgffor@toks=\toks43
 ))
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.cod
 e.tex
@@ -803,34 +910,34 @@ Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothan
 dlers.code.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count337
-\pgfplotmarksize=\dimen278
+\pgf@plot@mark@count=\count341
+\pgfplotmarksize=\dimen290
 )
-\tikz@lastx=\dimen279
-\tikz@lasty=\dimen280
-\tikz@lastxsaved=\dimen281
-\tikz@lastysaved=\dimen282
-\tikz@lastmovetox=\dimen283
-\tikz@lastmovetoy=\dimen284
-\tikzleveldistance=\dimen285
-\tikzsiblingdistance=\dimen286
-\tikz@figbox=\box69
-\tikz@figbox@bg=\box70
-\tikz@tempbox=\box71
-\tikz@tempbox@bg=\box72
-\tikztreelevel=\count338
-\tikznumberofchildren=\count339
-\tikznumberofcurrentchild=\count340
-\tikz@fig@count=\count341
+\tikz@lastx=\dimen291
+\tikz@lasty=\dimen292
+\tikz@lastxsaved=\dimen293
+\tikz@lastysaved=\dimen294
+\tikz@lastmovetox=\dimen295
+\tikz@lastmovetoy=\dimen296
+\tikzleveldistance=\dimen297
+\tikzsiblingdistance=\dimen298
+\tikz@figbox=\box72
+\tikz@figbox@bg=\box73
+\tikz@tempbox=\box74
+\tikz@tempbox@bg=\box75
+\tikztreelevel=\count342
+\tikznumberofchildren=\count343
+\tikznumberofcurrentchild=\count344
+\tikz@fig@count=\count345
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.cod
 e.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count342
-\pgfmatrixcurrentcolumn=\count343
-\pgf@matrix@numberofcolumns=\count344
+\pgfmatrixcurrentrow=\count346
+\pgfmatrixcurrentcolumn=\count347
+\pgf@matrix@numberofcolumns=\count348
 )
-\tikz@expandcount=\count345
+\tikz@expandcount=\count349
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarytopaths.code.tex
@@ -843,12 +950,12 @@ Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
 Package pgfplots info on input line 124: Initializing with LUA version Lua 5.3
 \pgfplots@luabackend@table=\catcodetable12
-\t@pgfplots@toka=\toks40
-\t@pgfplots@tokb=\toks41
-\t@pgfplots@tokc=\toks42
-\pgfplots@tmpa=\dimen287
-\c@pgfplots@coordindex=\count346
-\c@pgfplots@scanlineindex=\count347
+\t@pgfplots@toka=\toks44
+\t@pgfplots@tokb=\toks45
+\t@pgfplots@tokc=\toks46
+\pgfplots@tmpa=\dimen299
+\c@pgfplots@coordindex=\count350
+\c@pgfplots@scanlineindex=\count351
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric
 .code.tex))
@@ -874,14 +981,14 @@ liststructure.code.tex)
 liststructureext.code.tex)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 array.code.tex
-\c@pgfplotsarray@tmp=\count348
+\c@pgfplotsarray@tmp=\count352
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 matrix.code.tex)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable
 shared.code.tex
-\c@pgfplotstable@counta=\count349
-\t@pgfplotstable@a=\toks43
+\c@pgfplotstable@counta=\count353
+\t@pgfplotstable@a=\toks47
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/liststructure/pgfplots
 deque.code.tex)
@@ -893,7 +1000,7 @@ ta.code.tex))
 .code.tex)
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplot
 s.surfshading.code.tex
-\c@pgfplotslibrarysurf@no=\count350
+\c@pgfplotslibrarysurf@no=\count354
 
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots
 .surfshading.pgfsys-luatex.def)))
@@ -925,16 +1032,16 @@ x)
 s/tikzlibrarydecorations.code.tex
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/modules/pgfmoduledecoration
 s.code.tex
-\pgfdecoratedcompleteddistance=\dimen288
-\pgfdecoratedremainingdistance=\dimen289
-\pgfdecoratedinputsegmentcompleteddistance=\dimen290
-\pgfdecoratedinputsegmentremainingdistance=\dimen291
-\pgf@decorate@distancetomove=\dimen292
-\pgf@decorate@repeatstate=\count351
-\pgfdecorationsegmentamplitude=\dimen293
-\pgfdecorationsegmentlength=\dimen294
+\pgfdecoratedcompleteddistance=\dimen300
+\pgfdecoratedremainingdistance=\dimen301
+\pgfdecoratedinputsegmentcompleteddistance=\dimen302
+\pgfdecoratedinputsegmentremainingdistance=\dimen303
+\pgf@decorate@distancetomove=\dimen304
+\pgf@decorate@repeatstate=\count355
+\pgfdecorationsegmentamplitude=\dimen305
+\pgfdecorationsegmentlength=\dimen306
 )
-\tikz@lib@dec@box=\box73
+\tikz@lib@dec@box=\box76
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibrarydecorations.pathmorphing.code.tex
@@ -946,13 +1053,13 @@ s/tikzlibrarydecorations.pathreplacing.code.tex
 brarydecorations.pathreplacing.code.tex))
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplo
 ts.contourlua.code.tex)
-\pgfplots@numplots=\count352
-\pgfplots@xmin@reg=\dimen295
-\pgfplots@xmax@reg=\dimen296
-\pgfplots@ymin@reg=\dimen297
-\pgfplots@ymax@reg=\dimen298
-\pgfplots@zmin@reg=\dimen299
-\pgfplots@zmax@reg=\dimen300
+\pgfplots@numplots=\count356
+\pgfplots@xmin@reg=\dimen307
+\pgfplots@xmax@reg=\dimen308
+\pgfplots@ymin@reg=\dimen309
+\pgfplots@ymax@reg=\dimen310
+\pgfplots@zmin@reg=\dimen311
+\pgfplots@zmax@reg=\dimen312
 )
 (/usr/local/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/librarie
 s/tikzlibraryplotmarks.code.tex
@@ -967,32 +1074,32 @@ runsystem(rm nea-final.aex)...executed
  (./nea-final.aux)
 \openout1 = nea-final.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
-LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 4
-3.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 60.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 6
+0.
 
 (/usr/local/texlive/2022/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
-LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 60.
+LaTeX Font Info:    ... okay on input line 60.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: luatex
@@ -1013,12 +1120,12 @@ LaTeX Font Info:    ... okay on input line 43.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=12.0pt
+* \topskip=11.0pt
 * \footskip=30.0pt
-* \marginparwidth=35.0pt
+* \marginparwidth=50.0pt
 * \marginparsep=10.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -1028,7 +1135,7 @@ LaTeX Font Info:    ... okay on input line 43.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring ON on input line 43.
+Package hyperref Info: Link coloring ON on input line 60.
 (/usr/local/texlive/2022/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1039,29 +1146,29 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count353
+\c@section@level=\count357
 )
-LaTeX Info: Redefining \ref on input line 43.
-LaTeX Info: Redefining \pageref on input line 43.
-LaTeX Info: Redefining \nameref on input line 43.
+LaTeX Info: Redefining \ref on input line 60.
+LaTeX Info: Redefining \pageref on input line 60.
+LaTeX Info: Redefining \nameref on input line 60.
  (./nea-final.out) (./nea-final.out)
-\@outlinefile=\write6
+\@outlinefile=\write7
 
-\openout6 = nea-final.out
+\openout7 = nea-final.out
 
 (/usr/local/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count354
-\scratchdimen=\dimen301
-\scratchbox=\box74
-\nofMPsegments=\count355
-\nofMParguments=\count356
-\everyMPshowfont=\toks44
-\MPscratchCnt=\count357
-\MPscratchDim=\dimen302
-\MPnumerator=\count358
-\makeMPintoPDFobject=\count359
-\everyMPtoPDFconversion=\toks45
+\scratchcounter=\count358
+\scratchdimen=\dimen313
+\scratchbox=\box77
+\nofMPsegments=\count359
+\nofMParguments=\count360
+\everyMPshowfont=\toks48
+\MPscratchCnt=\count361
+\MPscratchDim=\dimen314
+\MPnumerator=\count362
+\makeMPintoPDFobject=\count363
+\everyMPtoPDFconversion=\toks49
 ) (/usr/local/texlive/2022/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -1077,266 +1184,773 @@ Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 43.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 43.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 43.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 43.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 43.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 43.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 43.
-LaTeX Font Info:    Redeclaring math accent \check on input line 43.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 43.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 43.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 43.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 43.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 43.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 60.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 60.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 60.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 60.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 60.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 60.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 60.
+LaTeX Font Info:    Redeclaring math accent \check on input line 60.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 60.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 60.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 60.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 60.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 60.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 43.
+(Font)              `operators' in the math version `normal' on input line 60.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 43.
+(Font)                  OT1/cmr/m/n --> TU/LatoLight(0)/m/n on input line 60.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 43.
+(Font)              `operators' in the math version `bold' on input line 60.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 43.
+(Font)                  OT1/cmr/bx/n --> TU/LatoLight(0)/m/n on input line 60.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 43.
+(Font)                  TU/LatoLight(0)/m/n --> TU/LatoLight(0)/m/n on input li
+ne 60.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 43.
+(Font)                  OT1/cmr/m/it --> TU/LatoLight(0)/m/it on input line 60.
+
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 43.
+(Font)                  OT1/cmr/bx/n --> TU/LatoLight(0)/b/n on input line 60.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 43.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 60.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
 (Font)                  OT1/cmtt/m/n --> TU/JetBrainsMonoNerdFont(0)/m/n on inp
-ut line 43.
+ut line 60.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 43.
+(Font)                  TU/LatoLight(0)/m/n --> TU/LatoLight(0)/b/n on input li
+ne 60.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 43.
+(Font)                  OT1/cmr/bx/it --> TU/LatoLight(0)/b/it on input line 60
+.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 43.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 60.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> TU/JetBrainsMonoNerdFont(0)/b/n on inp
-ut line 43.
+ut line 60.
 
 
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into 
 your preamble.
- on input line 43.
+ on input line 60.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 46.
+(./tiltle.tex (/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd) [1
 
-(/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 46.
+{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]) (./nea
+-final.toc)
+\tf@toc=\write8
 
+\openout8 = nea-final.toc
 
-(/usr/local/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1
+warning  (pdf backend): ignoring duplicate destination with the name 'page.1'
+[1
 
-{/usr/local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./nea-
-final.toc)
-\tf@toc=\write7
-
-\openout7 = nea-final.toc
-
-[2]
+]
+Chapter 1.
 LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/m/n' will be
-(Font)              scaled to size 9.60004pt on input line 51.
+(Font)              scaled to size 8.76003pt on input line 74.
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--55
+Overfull \hbox (21.32898pt too wide) in paragraph at lines 74--78
+\TU/LatoLight(0)/m/n/10.95 Lilac. In the world of pro-gram-ming lan-guages, ther
+e are the big pro-duc-tion lan-guages: Python, JavaScript,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 74--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--55
+Underfull \hbox (badness 10000) in paragraph at lines 74--78
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 51--55
+Underfull \hbox (badness 10000) in paragraph at lines 74--78
 
  []
 
 
-LaTeX Warning: Reference `fig:translato-rgraph' on page 3 undefined on input li
-ne 90.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 56--93
+Underfull \hbox (badness 10000) in paragraph at lines 79--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--93
+Underfull \hbox (badness 10000) in paragraph at lines 79--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--93
+Underfull \hbox (badness 10000) in paragraph at lines 79--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--93
+Underfull \hbox (badness 10000) in paragraph at lines 79--117
 
  []
 
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 133--134
+[2
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 196--197
+
+ []
+
+[3
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.1
+'
+]
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
 [4
-warning  (pdf backend): ignoring duplicate destination with the name 'figure.1'
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.2
+'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.1.3
+'
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 195--196
-
- []
-
-[5
-warning  (pdf backend): ignoring duplicate destination with the name 'figure.2'
-
-warning  (pdf backend): ignoring duplicate destination with the name 'figure.3'
-]
-Underfull \hbox (badness 10000) in paragraph at lines 197--198
+Underfull \hbox (badness 10000) in paragraph at lines 221--222
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--203
+Underfull \hbox (badness 10000) in paragraph at lines 225--227
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--218
+Underfull \hbox (badness 10000) in paragraph at lines 241--242
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
+Underfull \hbox (badness 10000) in paragraph at lines 244--246
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 261--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 279--281
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 287--288
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 291--293
 
  []
 
 [6]
-Underfull \hbox (badness 10000) in paragraph at lines 237--239
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 255--257
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 263--264
+Underfull \hbox (badness 10000) in paragraph at lines 306--307
 
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 267--269
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 326--328
+
+ []
+
+[8
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 387--389
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 452--454
+
+ []
+
+[10
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.2.1
+'
+]
+Underfull \hbox (badness 10000) in paragraph at lines 462--463
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--283
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 302--304
-
- []
-
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 363--365
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 399--401
-
- []
-
-[10]
-Underfull \hbox (badness 10000) in paragraph at lines 409--410
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 419--420
+Underfull \hbox (badness 10000) in paragraph at lines 472--473
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 445--446
+Underfull \hbox (badness 10000) in paragraph at lines 498--499
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 487--489
+\openout5 = nea-final.pyg
+ (./_minted-nea-final/default.pygstyle)
+(./_minted-nea-final/D3832F80A87F34F299FB38A830D2F6898FAC4E0C5B6138F160630474BD
+37D28A.pygtex
+LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/m/n' will be
+(Font)              scaled to size 7.20003pt on input line 1.
+)
+\openout4 = nea-final-1.cpt
+ (./nea-final-1.cpt)
+Overfull \hbox (5.17438pt too wide) in paragraph at lines 583--653
+ [][] 
+ []
+
+[13
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.2.2
+'
+
+warning  (pdf backend): ignoring duplicate destination with the name 'figure.2.3
+'
+]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--663
 
  []
 
 
+LaTeX Warning: Reference `code:init-file' on page 14 undefined on input line 66
+8.
+
+
+LaTeX Warning: Reference `code:driver' on page 14 undefined on input line 674.
+
+
+LaTeX Warning: Reference `code:scanner' on page 14 undefined on input line 678.
+
+
+
+LaTeX Warning: Reference `code:config' on page 14 undefined on input line 678.
+
+[14
+
+]
+
+LaTeX Warning: Reference `code:error_system' on page 15 undefined on input line
+ 680.
+
+
+LaTeX Warning: Reference `code:error_system' on page 15 undefined on input line
+ 680.
+
+
+LaTeX Warning: Reference `code:error_system' on page 15 undefined on input line
+ 680.
+
+
+LaTeX Warning: Reference `code:error_system' on page 15 undefined on input line
+ 680.
+
+
+Overfull \hbox (1.19347pt too wide) in paragraph at lines 682--683
+[]\TU/LatoLight(0)/m/n/10.95 First, an ex-pla-na-tion of dec-o-ra-tors in Python
+. Dec-o-ra-tors are cur-ried func-tions that can be placed
+ []
+
+
 \openout3 = nea-final.pyg
-(./_minted-nea-final/default.pygstyle)
-(./_minted-nea-final/2FB4BC101CAB06F69A406B3EE8957FCDC5FD1C07A47B54022F9BB130FF
-F4CD9A.pygtex
-LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/m/n' will be
-(Font)              scaled to size 8.00003pt on input line 1.
+
+(./_minted-nea-final/61DF770674C3ACE21F474D9619336225166DA1A482FAD9F27DA8822689
+5D4913.pygtex
 LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/b/n' will be
-(Font)              scaled to size 8.00003pt on input line 3.
+(Font)              scaled to size 7.20003pt on input line 2.
+)
+\openout3 = nea-final.pyg
+
+(./_minted-nea-final/9FFA4731DE559E1B00E13A9D53E984C78FAC4E0C5B6138F160630474BD
+37D28A.pygtex)
+\openout5 = nea-final.pyg
+
+(./_minted-nea-final/A93597FF844B01DFAA1635CFA23625B1166DA1A482FAD9F27DA8822689
+5D4913.pygtex)
+\openout5 = nea-final.pyg
+
+(./_minted-nea-final/78600E30F00FB7C932A4F1CCF267C9E5166DA1A482FAD9F27DA8822689
+5D4913.pygtex)
+Underfull \hbox (badness 10000) in paragraph at lines 708--709
+
+ []
+
+
+LaTeX Warning: Reference `code:error_system' on page 15 undefined on input line
+ 710.
+
+
+LaTeX Warning: Reference `code:error_system' on page 15 undefined on input line
+ 710.
+
+[15]
+
+LaTeX Warning: Reference `code:token' on page 16 undefined on input line 716.
+
+
+LaTeX Warning: Reference `code:token_type' on page 16 undefined on input line 7
+18.
+
+
+LaTeX Warning: Reference `code:stack' on page 16 undefined on input line 721.
+
+
+LaTeX Warning: Reference `code:stack' on page 16 undefined on input line 721.
+
+
+LaTeX Warning: Reference `code:stack' on page 16 undefined on input line 721.
+
+
+\openout5 = nea-final.pyg
+
+(./_minted-nea-final/FDA31FC9AF017C18DB79E2E4343A58D8166DA1A482FAD9F27DA8822689
+5D4913.pygtex) [16]
+Appendix A.
+(./code.tex
+\openout4 = nea-final-2.cpt
+ (./nea-final-2.cpt
+LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/m/n' will be
+(Font)              scaled to size 11.52003pt on input line 1.
+)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 5.
+
+runsystem(which python3 && touch nea-final.aex)...executed
+runsystem(rm nea-final.aex)...executed
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/__init__.py\"))
+; f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; 
+t = f.readlines() if f is not None else None; t_opt = t if t is not None else []
+; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.ex
+pandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t 
+is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1);
+ e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.deden
+t(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not 
+None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/5D1C69010EAD40490FDDD0A5CA0E0F50166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/5D1C69010EAD40490FDDD0A5CA0E0F50166DA1A482FAD9F27DA8822689
+5D4913.pygtex
 LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/m/it' will be
-(Font)              scaled to size 8.00003pt on input line 4.
- [13]) [14] (./nea-final.aux)
+(Font)              scaled to size 7.20003pt on input line 2.
+LaTeX Font Info:    Font shape `TU/JetBrainsMonoNerdFont(0)/m/n' will be
+(Font)              scaled to size 4.80002pt on input line 4.
+)
+\openout4 = nea-final-3.cpt
+ (./nea-final-3.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 9.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/actions.py\"));
+ f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t
+ = f.readlines() if f is not None else None; t_opt = t if t is not None else [];
+ f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.exp
+andvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t i
+s not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); 
+e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent
+(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not N
+one]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/BA9B4BA2CF80D2F5CA189DD6C2242761166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/BA9B4BA2CF80D2F5CA189DD6C2242761166DA1A482FAD9F27DA8822689
+5D4913.pygtex [17
+
+] [18])
+\openout4 = nea-final-4.cpt
+ (./nea-final-4.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 13.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/config.py\")); 
+f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t 
+= f.readlines() if f is not None else None; t_opt = t if t is not None else []; 
+f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.expa
+ndvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t is
+ not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); e
+ = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent(
+\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not No
+ne]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/379C24DCCE85AE9215C240D24525291A166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/379C24DCCE85AE9215C240D24525291A166DA1A482FAD9F27DA8822689
+5D4913.pygtex [19])
+\openout4 = nea-final-5.cpt
+ (./nea-final-5.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 17.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/driver.py\")); 
+f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t 
+= f.readlines() if f is not None else None; t_opt = t if t is not None else []; 
+f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.expa
+ndvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t is
+ not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); e
+ = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent(
+\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not No
+ne]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/D6E06E32982A2E283301114769565162166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/D6E06E32982A2E283301114769565162166DA1A482FAD9F27DA8822689
+5D4913.pygtex [20])
+\openout4 = nea-final-6.cpt
+ (./nea-final-6.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 21.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/environment.py\
+")); f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else Non
+e; t = f.readlines() if f is not None else None; t_opt = t if t is not None else
+ []; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path
+.expandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if
+ t is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-
+1); e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.de
+dent(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is n
+ot None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/540F7E91E961DEACF4B360E0560CD74B166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/540F7E91E961DEACF4B360E0560CD74B166DA1A482FAD9F27DA8822689
+5D4913.pygtex [21])
+\openout4 = nea-final-7.cpt
+ (./nea-final-7.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 25.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/error_system.py
+\")); f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else No
+ne; t = f.readlines() if f is not None else None; t_opt = t if t is not None els
+e []; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.pat
+h.expandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") i
+f t is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum
+-1); e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.d
+edent(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is 
+not None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/732A4F9B360FB51DE440EA719E8BF178166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/732A4F9B360FB51DE440EA719E8BF178166DA1A482FAD9F27DA8822689
+5D4913.pygtex [22])
+\openout4 = nea-final-8.cpt
+ (./nea-final-8.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 29.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/grammar.py\"));
+ f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t
+ = f.readlines() if f is not None else None; t_opt = t if t is not None else [];
+ f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.exp
+andvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t i
+s not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); 
+e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent
+(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not N
+one]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/1EDE73D2ECA155A2B8880479CBBF8771166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/1EDE73D2ECA155A2B8880479CBBF8771166DA1A482FAD9F27DA8822689
+5D4913.pygtex [23])
+\openout4 = nea-final-9.cpt
+ (./nea-final-9.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 33.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/mermaid_printer
+.py\")); f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else
+ None; t = f.readlines() if f is not None else None; t_opt = t if t is not None 
+else []; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.
+path.expandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\"
+) if t is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstart
+num-1); e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwra
+p.dedent(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t 
+is not None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/E50DA9EAA8103ECD287972B7035004F0166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/E50DA9EAA8103ECD287972B7035004F0166DA1A482FAD9F27DA8822689
+5D4913.pygtex [24])
+\openout4 = nea-final-10.cpt
+ (./nea-final-10.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 37.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/parser.py\")); 
+f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t 
+= f.readlines() if f is not None else None; t_opt = t if t is not None else []; 
+f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.expa
+ndvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t is
+ not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); e
+ = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent(
+\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not No
+ne]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/74DEB1FEA1CAEEA6AAC3F4E0EB215A00166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/74DEB1FEA1CAEEA6AAC3F4E0EB215A00166DA1A482FAD9F27DA8822689
+5D4913.pygtex [25] [26])
+\openout4 = nea-final-11.cpt
+ (./nea-final-11.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 41.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/scanner.py\"));
+ f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t
+ = f.readlines() if f is not None else None; t_opt = t if t is not None else [];
+ f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.exp
+andvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t i
+s not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); 
+e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent
+(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not N
+one]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/0EC60B23D0C2519BE065A79E1A59A085166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/0EC60B23D0C2519BE065A79E1A59A085166DA1A482FAD9F27DA8822689
+5D4913.pygtex [27] [28] [29] [30])
+\openout4 = nea-final-12.cpt
+ (./nea-final-12.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 45.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/stack.py\")); f
+ = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t =
+ f.readlines() if f is not None else None; t_opt = t if t is not None else []; f
+.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.expan
+dvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t is 
+not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); e 
+= min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent(\
+"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not Non
+e]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/2B473C8E84992D03C33C952DD09A2BB2166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/2B473C8E84992D03C33C952DD09A2BB2166DA1A482FAD9F27DA8822689
+5D4913.pygtex [31])
+\openout4 = nea-final-13.cpt
+ (./nea-final-13.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 49.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/token_type.py\"
+)); f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None
+; t = f.readlines() if f is not None else None; t_opt = t if t is not None else 
+[]; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.
+expandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if 
+t is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1
+); e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.ded
+ent(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is no
+t None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/69095501FFD0F15E0A6D73B15CDAE80B166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/69095501FFD0F15E0A6D73B15CDAE80B166DA1A482FAD9F27DA8822689
+5D4913.pygtex [32])
+\openout4 = nea-final-14.cpt
+ (./nea-final-14.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 53.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/tokens.py\")); 
+f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t 
+= f.readlines() if f is not None else None; t_opt = t if t is not None else []; 
+f.close() if f is not None else None; tmpfname = os.path.expanduser(os.path.expa
+ndvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t is
+ not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); e
+ = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent(
+\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not No
+ne]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/8D536278A806A07BBE3F556B36338D37166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/8D536278A806A07BBE3F556B36338D37166DA1A482FAD9F27DA8822689
+5D4913.pygtex)
+\openout4 = nea-final-15.cpt
+ (./nea-final-15.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 57.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/tree.py\")); f 
+= open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else None; t = 
+f.readlines() if f is not None else None; t_opt = t if t is not None else []; f.
+close() if f is not None else None; tmpfname = os.path.expanduser(os.path.expand
+vars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") if t is n
+ot None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum-1); e =
+ min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.dedent(\"
+\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is not None
+]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/00EB0618466434378BA26312A1CE3507166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/00EB0618466434378BA26312A1CE3507166DA1A482FAD9F27DA8822689
+5D4913.pygtex [33])
+\openout4 = nea-final-16.cpt
+ (./nea-final-16.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 61.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/tree_actions.py
+\")); f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else No
+ne; t = f.readlines() if f is not None else None; t_opt = t if t is not None els
+e []; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.pat
+h.expandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") i
+f t is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum
+-1); e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.d
+edent(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is 
+not None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/4D94E3D7D23918D2EEC23A9E1C03F36C166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/4D94E3D7D23918D2EEC23A9E1C03F36C166DA1A482FAD9F27DA8822689
+5D4913.pygtex [34] [35] [36] [37] [38] [39])
+\openout4 = nea-final-17.cpt
+ (./nea-final-17.cpt)
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@ifnextchar' on input line 65.
+
+runsystem(python3 -c "import sys; import os; import textwrap; from io import ope
+n; fname = os.path.expanduser(os.path.expandvars(\"/Users/valerie/Documents/Sixt
+h-Form/Computer-Science/nea-full-repo/lilac-implementation/lilac/tree_machine.py
+\")); f = open(fname, \"r\", encoding=\"UTF8\") if os.path.isfile(fname) else No
+ne; t = f.readlines() if f is not None else None; t_opt = t if t is not None els
+e []; f.close() if f is not None else None; tmpfname = os.path.expanduser(os.pat
+h.expandvars(\"nea-final.pyg\")); f = open(tmpfname, \"w\", encoding=\"UTF8\") i
+f t is not None else None; fvstartnum = 0; fvstopnum = -1; s = max(0, fvstartnum
+-1); e = min(s, fvstopnum if fvstopnum > 0 else len(t_opt)); [f.write(textwrap.d
+edent(\"\".join(x))) for x in (t_opt[0:s], t_opt[s:e], t_opt[e:]) if x and t is 
+not None]; f.close() if t is not None else os.remove(tmpfname);")...executed
+runsystem(pygmentize -l python -f latex -P commandprefix=PYG -F tokenmerge -P st
+ripnl=False -o _minted-nea-final/A0290ECD257453369AB829E66FB7610C166DA1A482FAD9F
+27DA88226895D4913.pygtex nea-final.pyg)...executed
+
+(./_minted-nea-final/A0290ECD257453369AB829E66FB7610C166DA1A482FAD9F27DA8822689
+5D4913.pygtex [40])) [41] (./nea-final.aux)
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `nea-final.out' has not changed.
-(rerunfilecheck)             Checksum: F078E315B5DE432A0810FE85BD99FF0E;3118.
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `nea-final.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `nea-final.out':
+(rerunfilecheck)             Before: 46A95A5404AA6C3D922045796F56C959;4885
+(rerunfilecheck)             After:  70135E420AD0F39D5B2CB702A2F6B7DD;7183.
 runsystem(rm nea-final.pyg)...executed
 )
 
 Here is how much of LuaTeX's memory you used:
- 37595 strings out of 477785
- 100000,1648299 words of node,token memory allocated
- 520 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 8 attribute, 57 glue_spec,
- 8 attribute_list, 2 write nodes
-   avail lists: 2:2627,3:984,4:164,5:432,6:62,7:9563,8:45,9:714,10:20,11:641
- 56967 multiletter control sequences out of 65536+600000
- 77 fonts using 16887207 bytes
- 100i,9n,98p,1157b,751s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 38896 strings out of 477785
+ 125009,1648299 words of node,token memory allocated
+ 534 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 9 attribute, 59 glue_spec,
+ 9 attribute_list, 2 write nodes
+   avail lists: 2:3278,3:998,4:842,5:660,6:128,7:9726,8:71,9:1371,10:16,11:646
+ 57706 multiletter control sequences out of 65536+600000
+ 86 fonts using 17792319 bytes
+ 100i,21n,98p,1386b,755s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </Users/valerie/Library/Fonts/JetBrains Mono Italic Nerd Font Complete.ttf></Use
-rs/valerie/Library/Fonts/JetBrains Mono Bold Nerd Font Complete.ttf></usr/local/
-texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman6-regular.otf></Users/va
-lerie/Library/Fonts/JetBrains Mono Regular Nerd Font Complete.ttf></usr/local/te
-xlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-regular.otf></usr/local
-/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-italic.otf></usr/loc
-al/texlive/2022/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.otf></usr/loc
-al/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local
-/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/te
-xlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texliv
-e/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on nea-final.pdf (14 pages, 150373 bytes).
+rs/valerie/Library/Fonts/JetBrains Mono Bold Nerd Font Complete.ttf></Users/vale
+rie/Library/Fonts/JetBrains Mono Regular Nerd Font Complete.ttf></Users/valerie/
+Library/Fonts/Lato-Regular.ttf></Users/valerie/Library/Fonts/Lato-Light.ttf></Us
+ers/valerie/Library/Fonts/Lato-Bold.ttf></usr/local/texlive/2022/texmf-dist/font
+s/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2022/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2022/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr8.pfb></usr/local/texlive/2022/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmsy6.pfb>
+Output written on nea-final.pdf (42 pages, 297729 bytes).
 
-PDF statistics: 251 PDF objects out of 1000 (max. 8388607)
- 207 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 131072)
- 176 words of extra memory for PDF output out of 10000 (max. 100000000)
+PDF statistics: 465 PDF objects out of 1000 (max. 8388607)
+ 393 compressed objects within 4 object streams
+ 100 named destinations out of 1000 (max. 131072)
+ 288 words of extra memory for PDF output out of 10000 (max. 100000000)
 

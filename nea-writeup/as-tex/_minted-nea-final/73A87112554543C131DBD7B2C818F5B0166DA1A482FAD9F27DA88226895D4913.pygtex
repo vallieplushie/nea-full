@@ -1,0 +1,94 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*} 
+\PYG{k+kn}{from} \PYG{n+nn}{sys} \PYG{k+kn}{import} \PYG{n}{exit}
+
+\PYG{k}{class} \PYG{n+nc}{Lilac}\PYG{p}{:} 
+    \PYG{n}{tree\PYGZus{}m} \PYG{o}{=} \PYG{n}{TreeMachine}\PYG{p}{()}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{start\PYGZus{}prompt}\PYG{p}{():}
+        \PYG{n+nb}{open}\PYG{p}{(}\PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{LOG\PYGZus{}PATH}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}w\PYGZsq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+        \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{INTERACTIVE\PYGZus{}MODE} \PYG{o}{=} \PYG{k+kc}{True}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{}\PYGZhy{} \PYGZdq{}}\PYG{o}{*}\PYG{l+m+mi}{6}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZhy{}| Lilac Interactive |\PYGZhy{}}\PYG{l+s+si}{\PYGZob{}}\PYG{l+s+s2}{\PYGZdq{} \PYGZhy{}\PYGZdq{}}\PYG{o}{*}\PYG{l+m+mi}{6}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}  Type \PYGZdl{}[q]uit to quit and \PYGZdl{}[h]elp to get help.}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+        \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{run\PYGZus{}prompt}\PYG{p}{()}
+
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{run\PYGZus{}prompt}\PYG{p}{():}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Runs an interactive prompt\PYGZdq{}\PYGZdq{}\PYGZdq{}}  
+        \PYG{n}{user\PYGZus{}in}\PYG{p}{:}\PYG{n+nb}{str} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+        \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+            \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{tree\PYGZus{}m}\PYG{o}{.}\PYG{n}{empty\PYGZus{}stack}\PYG{p}{()}
+            \PYG{n}{user\PYGZus{}in} \PYG{o}{=} \PYG{n+nb}{input}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}\PYGZlt{}i\PYGZgt{} \PYGZsq{}}\PYG{p}{)}
+
+            \PYG{k}{if} \PYG{n}{user\PYGZus{}in}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZdl{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{do\PYGZus{}interactive\PYGZus{}command}\PYG{p}{(}\PYG{n}{user\PYGZus{}in}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:])}
+                \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{run\PYGZus{}prompt}\PYG{p}{()}
+
+            \PYG{n}{scanner} \PYG{o}{=} \PYG{n}{Scanner}\PYG{p}{(}\PYG{n}{user\PYGZus{}in}\PYG{p}{)}
+            \PYG{n}{tokens} \PYG{o}{=} \PYG{n}{scanner}\PYG{o}{.}\PYG{n}{scan}\PYG{p}{()}
+
+            \PYG{k}{if} \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{HAD\PYGZus{}ERROR}\PYG{p}{:}
+                \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{HAD\PYGZus{}ERROR} \PYG{o}{=} \PYG{k+kc}{False}
+                \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{run\PYGZus{}prompt}\PYG{p}{()}
+
+            \PYG{n}{tokens\PYGZus{}string} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{t}\PYG{o}{.}\PYG{n}{type}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{, }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{t}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}} \PYG{k}{for} \PYG{n}{t} \PYG{o+ow}{in} \PYG{n}{scanner}\PYG{o}{.}\PYG{n}{scan}\PYG{p}{()]}
+            \PYG{c+c1}{\PYGZsh{} print(tokens)}
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Tokens: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{tokens\PYGZus{}string}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+            \PYG{n}{tree} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{parse}\PYG{p}{(}\PYG{n}{tokens}\PYG{p}{)}
+
+            \PYG{k}{if} \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{HAD\PYGZus{}ERROR}\PYG{p}{:}
+                \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{HAD\PYGZus{}ERROR} \PYG{o}{=} \PYG{k+kc}{False}
+                \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{run\PYGZus{}prompt}\PYG{p}{()}
+
+            \PYG{n}{out} \PYG{o}{=} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Tree: }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{tree}\PYG{o}{.}\PYG{n}{in\PYGZus{}order}\PYG{p}{()}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}
+            \PYG{n}{out} \PYG{o}{+=} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{tree\PYGZus{}m}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{n}{tree}\PYG{p}{))}
+            \PYG{c+c1}{\PYGZsh{} print(PrettyPrinter.tree\PYGZus{}to\PYGZus{}mermaid(tree))}
+            \PYG{c+c1}{\PYGZsh{} out = Lilac.tree\PYGZus{}m.execute(tree) }
+            \PYG{k}{if} \PYG{n}{out} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}\PYGZlt{}o\PYGZgt{} }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{out}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{do\PYGZus{}interactive\PYGZus{}command}\PYG{p}{(}\PYG{n}{command}\PYG{p}{:} \PYG{n+nb}{str}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{n}{command\PYGZus{}args} \PYG{o}{=} \PYG{n}{command}\PYG{o}{.}\PYG{n}{split}\PYG{p}{()}
+        \PYG{n}{cmd} \PYG{o}{=} \PYG{n}{command\PYGZus{}args}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}
+        \PYG{n}{args} \PYG{o}{=} \PYG{n}{command\PYGZus{}args}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:]}
+        \PYG{k}{match} \PYG{n}{cmd}\PYG{p}{:}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}q\PYGZsq{}} \PYG{o}{|} \PYG{l+s+s1}{\PYGZsq{}quit\PYGZsq{}}\PYG{p}{:} 
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Leaving Lilac...\PYGZsq{}}\PYG{p}{)}
+                \PYG{n}{exit}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}h\PYGZsq{}} \PYG{o}{|} \PYG{l+s+s1}{\PYGZsq{}help\PYGZsq{}}\PYG{p}{:} \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{print\PYGZus{}help}\PYG{p}{(}\PYG{n}{args}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}i\PYGZsq{}} \PYG{o}{|} \PYG{l+s+s1}{\PYGZsq{}info\PYGZsq{}}\PYG{p}{:} \PYG{n}{Lilac}\PYG{o}{.}\PYG{n}{print\PYGZus{}info}\PYG{p}{(}\PYG{n}{args}\PYG{p}{)}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{print\PYGZus{}help}\PYG{p}{(}\PYG{n}{args}\PYG{p}{:} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{])} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{k}{if} \PYG{o+ow}{not} \PYG{n}{args}\PYG{p}{:}
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Lilac language repl cool :D\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{match} \PYG{n}{args}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]:}
+                \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}author\PYGZsq{}}\PYG{p}{:}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Lilac was built and designed by Valérie Thibault.\PYGZsq{}}\PYG{p}{)}
+                \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}help\PYGZsq{}}\PYG{p}{:}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Real smart, nice one...\PYGZsq{}}\PYG{p}{)}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}You can use the help command followed by any other command to learn about its usage.\PYGZsq{}}\PYG{p}{)}
+                \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}info\PYGZsq{}}\PYG{p}{:}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Use info with any operator to see informtion about it.\PYGZsq{}}\PYG{p}{)}
+                \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}quit\PYGZsq{}}\PYG{p}{:}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Use this to quit the interactive mode.\PYGZsq{}}\PYG{p}{)}
+                \PYG{k}{case} \PYG{k}{\PYGZus{}}\PYG{p}{:}
+                    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Lilac language repl cool :D\PYGZsq{}}\PYG{p}{)}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{k}{def} \PYG{n+nf}{print\PYGZus{}info}\PYG{p}{(}\PYG{n}{args}\PYG{p}{:} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n+nb}{str}\PYG{p}{])} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{k}{if} \PYG{n}{args} \PYG{o+ow}{is} \PYG{p}{[]:}
+            \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Well, what do you need info about?\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{rule} \PYG{o}{=} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{bindings}\PYG{o}{.}\PYG{n}{get}\PYG{p}{(}\PYG{n}{args}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+            \PYG{k}{if} \PYG{n}{rule} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Not an operator\PYGZsq{}}\PYG{p}{)}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}(}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{args}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{) has a precedence of }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}prec\PYGZdq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ and is associative in the }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s2}{\PYGZdq{}assoc\PYGZdq{}}\PYG{p}{]}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ direction.\PYGZsq{}}\PYG{p}{)}
+
+
+\end{Verbatim}

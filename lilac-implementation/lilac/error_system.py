@@ -56,8 +56,4 @@ class StatusHandler:
         else:
             print(output)
             exit(64)
-    
-    
-
-
 

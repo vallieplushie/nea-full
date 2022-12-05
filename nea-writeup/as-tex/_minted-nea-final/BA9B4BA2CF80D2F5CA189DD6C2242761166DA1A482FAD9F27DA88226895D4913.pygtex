@@ -1,0 +1,120 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k}{class} \PYG{n+nc}{LiteralAction}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{val}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{val} \PYG{o}{=} \PYG{n}{val}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{):}
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{val}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{glob}
+
+
+\PYG{k}{class} \PYG{n+nc}{AssignAction}\PYG{p}{():}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{):}
+
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+        \PYG{n}{val1} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n}{val2} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{table}\PYG{p}{[}\PYG{n}{val1}\PYG{p}{]} \PYG{o}{=} \PYG{n}{val2} 
+        \PYG{k}{return} \PYG{n}{glob}
+
+
+\PYG{k}{class} \PYG{n+nc}{ArithmeticAction}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{check}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{,} \PYG{n}{op1}\PYG{p}{,} \PYG{n}{op2}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} if try}
+        \PYG{k}{if} \PYG{n+nb}{isinstance}\PYG{p}{(}\PYG{n}{op1}\PYG{p}{,} \PYG{n+nb}{str}\PYG{p}{):}
+            \PYG{k}{try}\PYG{p}{:}
+                \PYG{n}{val1} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{table}\PYG{p}{[}\PYG{n}{op1}\PYG{p}{]}
+            \PYG{k}{except}\PYG{p}{:}
+                \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Identifier }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{op1}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ does not exist in the data table\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{val1} \PYG{o}{=} \PYG{n}{op1}
+
+        \PYG{k}{if} \PYG{n+nb}{isinstance}\PYG{p}{(}\PYG{n}{op2}\PYG{p}{,} \PYG{n+nb}{str}\PYG{p}{):}
+            \PYG{n}{val2} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{table}\PYG{p}{[}\PYG{n}{op2}\PYG{p}{]}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{val2} \PYG{o}{=} \PYG{n}{op2}
+
+        \PYG{k}{return} \PYG{n}{val1}\PYG{p}{,} \PYG{n}{val2}
+
+
+
+\PYG{k}{class} \PYG{n+nc}{AdditionAction}\PYG{p}{(}\PYG{n}{ArithmeticAction}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{):}
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+        \PYG{n}{op1} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n}{op2} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+
+        \PYG{c+c1}{\PYGZsh{} check the results}
+        \PYG{n}{val1}\PYG{p}{,} \PYG{n}{val2} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{check}\PYG{p}{(}\PYG{n}{glob}\PYG{p}{,} \PYG{n}{op1}\PYG{p}{,} \PYG{n}{op2}\PYG{p}{)} 
+
+        \PYG{c+c1}{\PYGZsh{} do the operation}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{val1} \PYG{o}{+} \PYG{n}{val2}
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{glob}
+
+\PYG{k}{class} \PYG{n+nc}{SubtractionAction}\PYG{p}{(}\PYG{n}{ArithmeticAction}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{):}
+
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+        \PYG{n}{op1} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n}{op2} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+
+        \PYG{c+c1}{\PYGZsh{} Check the results}
+        \PYG{n}{val1}\PYG{p}{,} \PYG{n}{val2} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{check}\PYG{p}{(}\PYG{n}{glob}\PYG{p}{,} \PYG{n}{op1}\PYG{p}{,} \PYG{n}{op2}\PYG{p}{)}
+
+        \PYG{c+c1}{\PYGZsh{} Do the operation}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{val1} \PYG{o}{\PYGZhy{}} \PYG{n}{val2}
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{glob}
+
+\PYG{k}{class} \PYG{n+nc}{MultiplicationAction}\PYG{p}{(}\PYG{n}{ArithmeticAction}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{):}
+
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+        \PYG{n}{op1} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n}{op2} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+
+        \PYG{c+c1}{\PYGZsh{} check the results}
+        \PYG{n}{val1}\PYG{p}{,} \PYG{n}{val2} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{check}\PYG{p}{(}\PYG{n}{glob}\PYG{p}{,} \PYG{n}{op1}\PYG{p}{,} \PYG{n}{op2}\PYG{p}{)} 
+
+        \PYG{c+c1}{\PYGZsh{} do the operation}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{val1} \PYG{o}{*} \PYG{n}{val2}
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{glob}
+
+\PYG{k}{class} \PYG{n+nc}{DivisionAction}\PYG{p}{(}\PYG{n}{ArithmeticAction}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{k}{pass}
+
+    \PYG{k}{def} \PYG{n+nf}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{glob}\PYG{p}{):}
+
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{pop}\PYG{p}{()}
+        \PYG{n}{op1} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n}{op2} \PYG{o}{=} \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{out}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}
+
+        \PYG{c+c1}{\PYGZsh{} check the results}
+        \PYG{n}{val1}\PYG{p}{,} \PYG{n}{val2} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{check}\PYG{p}{(}\PYG{n}{glob}\PYG{p}{,} \PYG{n}{op1}\PYG{p}{,} \PYG{n}{op2}\PYG{p}{)} 
+
+        \PYG{c+c1}{\PYGZsh{} do the operation}
+        \PYG{n}{ans} \PYG{o}{=} \PYG{n}{val1} \PYG{o}{/} \PYG{n}{val2}
+        \PYG{n}{glob}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{Stack}\PYG{o}{.}\PYG{n}{push}\PYG{p}{(}\PYG{n}{ans}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{glob}
+\end{Verbatim}

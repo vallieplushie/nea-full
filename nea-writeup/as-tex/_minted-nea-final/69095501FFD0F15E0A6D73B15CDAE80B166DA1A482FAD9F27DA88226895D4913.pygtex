@@ -1,0 +1,44 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} from . import *}
+\PYG{k+kn}{from} \PYG{n+nn}{enum} \PYG{k+kn}{import} \PYG{n}{Enum}\PYG{p}{,} \PYG{n}{auto}
+
+\PYG{k}{class} \PYG{n+nc}{TokenType}\PYG{p}{(}\PYG{n}{Enum}\PYG{p}{):}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Enumerates the possible types of tokens\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{COLON} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{ARROW} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{SPACE} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{SEMI\PYGZus{}COLON} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{NEW\PYGZus{}LINE} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{LEFT\PYGZus{}PAREN} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{RIGHT\PYGZus{}PAREN} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+
+    \PYG{n}{PLUS} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{MINUS} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{STAR} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{SLASH} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{DIV} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{MOD} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+
+    \PYG{n}{OR} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{AND} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{NOT} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{EQUAL} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{LESS} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{LESS\PYGZus{}EQUAL} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{GREATER} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{GREATER\PYGZus{}EQUAL} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{NOT\PYGZus{}EQUAL} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+
+    \PYG{n}{PIPE} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{QUESTION} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+
+    \PYG{n}{STRING} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{NUMBER} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{IDENTIFIER} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{TRUE} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{FALSE} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+    \PYG{n}{IN} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+
+    \PYG{n}{EOF} \PYG{o}{=} \PYG{n}{auto}\PYG{p}{()}
+
+\end{Verbatim}

@@ -41,7 +41,7 @@ class Lilac:
                 LICONF.HAD_ERROR = False
                 Lilac.run_prompt()
 
-            out = f'Tree: {tree.in_order()}'
+            print(f'Tree: {tree.in_order()}\n')
             out = Lilac.tree_m.execute(tree)
             # print(PrettyPrinter.tree_to_mermaid(tree))
             # out = Lilac.tree_m.execute(tree) 

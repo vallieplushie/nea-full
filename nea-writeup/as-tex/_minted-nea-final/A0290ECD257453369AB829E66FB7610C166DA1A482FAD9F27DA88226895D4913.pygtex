@@ -1,0 +1,23 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k}{class} \PYG{n+nc}{TreeMachine}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{tree}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env\PYGZus{}monad} \PYG{o}{=} \PYG{n}{EnvMonad}\PYG{p}{()}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tree} \PYG{o}{=} \PYG{n}{tree}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}INFO\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{execute}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{tree}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env\PYGZus{}monad} \PYG{o}{\PYGZgt{}\PYGZgt{}} \PYG{n}{tree}\PYG{o}{.}\PYG{n}{action}
+        \PYG{c+c1}{\PYGZsh{} print(self.env\PYGZus{}monad.trace)}
+        \PYG{n}{top} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env\PYGZus{}monad}\PYG{o}{.}\PYG{n}{env}\PYG{o}{.}\PYG{n}{stackmonad}\PYG{o}{.}\PYG{n}{stack}\PYG{o}{.}\PYG{n}{top}\PYG{o}{.}\PYG{n}{value}
+        \PYG{k}{if} \PYG{n}{top}\PYG{o}{.}\PYG{n}{literal} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{k+kc}{None}\PYG{p}{:}
+            \PYG{k}{return} \PYG{n}{top}\PYG{o}{.}\PYG{n}{literal}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{return} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+
+    \PYG{k}{def} \PYG{n+nf}{empty\PYGZus{}stack}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env\PYGZus{}monad}\PYG{o}{.}\PYG{n}{env}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{=} \PYG{n}{StackMonad}\PYG{p}{()}
+
+
+\end{Verbatim}

@@ -1,0 +1,270 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*} 
+
+\PYG{k}{class} \PYG{n+nc}{Scanner}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{    Scans the source code}
+\PYG{l+s+sd}{    \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+    \PYG{c+c1}{\PYGZsh{} for printing the log}
+    \PYG{c+c1}{\PYGZsh{} iterpointer = 0}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{source}\PYG{p}{:} \PYG{n+nb}{str}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{:} \PYG{n+nb}{str} \PYG{o}{=} \PYG{n}{source}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{:} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n}{Tokens}\PYG{p}{]} \PYG{o}{=} \PYG{p}{[]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{start}\PYG{p}{:} \PYG{n+nb}{int} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}\PYG{p}{:} \PYG{n+nb}{int} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{:} \PYG{n+nb}{int} \PYG{o}{=} \PYG{l+m+mi}{1}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}INFO\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{scan}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n}{Token}\PYG{p}{]:} 
+        \PYG{k}{while} \PYG{o+ow}{not} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{at\PYGZus{}end}\PYG{p}{():}
+            \PYG{c+c1}{\PYGZsh{} new token starts where the last one ended }
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{start} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{scan\PYGZus{}token}\PYG{p}{()}
+            \PYG{k}{if} \PYG{n}{LICONF}\PYG{o}{.}\PYG{n}{HAD\PYGZus{}ERROR}\PYG{p}{:} 
+                \PYG{k}{return} \PYG{p}{[]}
+
+        \PYG{c+c1}{\PYGZsh{} remove non\PYGZhy{}essential whitespace}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens} \PYG{o}{+=} \PYG{p}{[}\PYG{n}{Token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{EOF}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{)]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{clean\PYGZus{}tokens}\PYG{p}{()}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{scan\PYGZus{}token}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Scans a single token by consuming it and checking against combinations\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{character} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+        \PYG{c+c1}{\PYGZsh{} checks which token the current character is}
+        \PYG{k}{match} \PYG{n}{character}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{} single character tokens}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}:\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{COLON}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{};\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SEMI\PYGZus{}COLON}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}(\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LEFT\PYGZus{}PAREN}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{})\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{RIGHT\PYGZus{}PAREN}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}+\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{PLUS}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}*\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{STAR}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}/\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SLASH}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}\PYGZpc{}\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{MOD}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}?\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{QUESTION}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}=\PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{EQUAL}\PYG{p}{)}
+
+            \PYG{c+c1}{\PYGZsh{} multi character tokens}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{ARROW}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{MINUS}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}|\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}comment}\PYG{p}{()}
+                \PYG{k}{elif} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}|\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{OR}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{PIPE}\PYG{p}{)}
+
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}\PYGZam{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}\PYGZam{}\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{AND}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{StatusHandler}\PYG{o}{.}\PYG{n}{throw}\PYG{p}{(}\PYG{n}{ErrorType}\PYG{o}{.}\PYG{n}{SyntaxError}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,} 
+                                \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Unexpected character }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{character}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}\PYGZlt{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}=\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LESS\PYGZus{}EQUAL}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LESS}\PYG{p}{)}
+
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}=\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{GREATER\PYGZus{}EQUAL}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{GREATER}\PYG{p}{)}
+
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}!\PYGZsq{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}=\PYGZsq{}}\PYG{p}{):}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NOT\PYGZus{}EQUAL}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NOT}\PYG{p}{)}
+
+            \PYG{c+c1}{\PYGZsh{} white space}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{} \PYGZsq{}}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SPACE}\PYG{p}{)}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}t}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{k}{pass}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}r}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} \PYG{k}{pass}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:} 
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NEW\PYGZus{}LINE}\PYG{p}{)}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line} \PYG{o}{+=}\PYG{l+m+mi}{1}
+
+            \PYG{c+c1}{\PYGZsh{} strings}
+            \PYG{k}{case} \PYG{l+s+s1}{\PYGZsq{}\PYGZdq{}\PYGZsq{}}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}string}\PYG{p}{()}
+
+            \PYG{k}{case} \PYG{k}{\PYGZus{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n}{character}\PYG{o}{.}\PYG{n}{isnumeric}\PYG{p}{():} 
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}number}\PYG{p}{()}
+                \PYG{k}{elif} \PYG{n}{character}\PYG{o}{.}\PYG{n}{isalpha}\PYG{p}{():}
+                    \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}identifier}\PYG{p}{()}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{n}{StatusHandler}\PYG{o}{.}\PYG{n}{throw}\PYG{p}{(}\PYG{n}{ErrorType}\PYG{o}{.}\PYG{n}{SyntaxError}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,} 
+                                \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Unexpected character }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{character}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+                    \PYG{k}{return}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{clean\PYGZus{}tokens}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Removes unecessary white space and new lines\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{t} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n}{paren\PYGZus{}count} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n}{function\PYGZus{}call} \PYG{o}{=} \PYG{k+kc}{False}
+        \PYG{k}{while} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{o+ow}{not} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{EOF}\PYG{p}{:}
+            \PYG{n}{t} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SEMI\PYGZus{}COLON}\PYG{p}{:}
+                \PYG{n}{function\PYGZus{}call} \PYG{o}{=} \PYG{k+kc}{True}
+
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SPACE}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n}{t} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                    \PYG{k}{continue}
+                \PYG{k}{elif} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{IDENTIFIER}\PYGZbs{}
+                        \PYG{o+ow}{and} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{literal} \PYG{o}{+} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{parens}\PYG{p}{:}
+                    \PYG{n}{function\PYGZus{}call} \PYG{o}{=} \PYG{k+kc}{True}
+                    \PYG{k}{continue}
+                \PYG{k}{elif} \PYG{n}{function\PYGZus{}call}\PYGZbs{}
+                        \PYG{o+ow}{and} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{literal} \PYG{o}{+} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{parens}\PYGZbs{}
+                        \PYG{o+ow}{and} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{literal} \PYG{o}{+} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{parens}\PYG{p}{:}
+                    \PYG{k}{continue}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{k}{del} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}
+
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LEFT\PYGZus{}PAREN}\PYG{p}{:}
+                \PYG{n}{paren\PYGZus{}count} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{RIGHT\PYGZus{}PAREN}\PYG{p}{:}
+                \PYG{n}{paren\PYGZus{}count} \PYG{o}{\PYGZhy{}=} \PYG{l+m+mi}{1}
+
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NEW\PYGZus{}LINE}\PYG{p}{:}
+                \PYG{n}{function\PYGZus{}call} \PYG{o}{=} \PYG{k+kc}{False}
+                \PYG{k}{if} \PYG{n}{paren\PYGZus{}count} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+                    \PYG{k}{continue}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{k}{del} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{p}{[}\PYG{n}{t}\PYG{p}{]}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{at\PYGZus{}end}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{bool}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Checks if we are at the end of the source code\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current} \PYG{o}{\PYGZgt{}=} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{):} 
+            \PYG{k}{return} \PYG{k+kc}{True} 
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{k}{return} \PYG{k+kc}{False} 
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{advance}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Consumes a character in the string and advances\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{c} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current} \PYG{o}{+=} \PYG{l+m+mi}{1}
+        \PYG{k}{return} \PYG{n}{c}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}token}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n+nb}{type}\PYG{p}{:} \PYG{n}{TokenType}\PYG{p}{,} \PYG{n}{literal}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Adds a token to the list\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{EOF}\PYG{p}{:}
+            \PYG{n}{lexeme} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n}{lexeme} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{start}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}\PYG{p}{]}
+
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{tokens}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{Token}\PYG{p}{(}\PYG{n+nb}{type}\PYG{p}{,} \PYG{n}{lexeme}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,} \PYG{n}{literal}\PYG{p}{))}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{match}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{character}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{bool}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Looks ahead at the next character and consumes it\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n+nb}{next} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()}
+        \PYG{k}{if} \PYG{n+nb}{next} \PYG{o}{==} \PYG{n}{character}\PYG{p}{:}
+           \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+           \PYG{k}{return} \PYG{k+kc}{True}
+        \PYG{k}{return} \PYG{k+kc}{False}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{peek}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}looks at the next character without consuming it\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{at\PYGZus{}end}\PYG{p}{():}
+            \PYG{k}{return} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+        \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}\PYG{p}{]}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}comment}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{k}{while} \PYG{k+kc}{True}\PYG{p}{:}
+            \PYG{n}{character} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+            \PYG{k}{if} \PYG{p}{(}\PYG{n}{character} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZhy{}\PYGZsq{}} \PYG{o+ow}{and} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{match}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}|\PYGZsq{}}\PYG{p}{))} \PYG{o+ow}{or} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{at\PYGZus{}end}\PYG{p}{():}
+                \PYG{k}{return}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{k}{continue}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}string}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Adds a string literal, continues advancing until the string stops\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{while} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()} \PYG{o}{!=} \PYG{l+s+s1}{\PYGZsq{}\PYGZdq{}\PYGZsq{}} \PYG{o+ow}{and} \PYG{o+ow}{not} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{at\PYGZus{}end}\PYG{p}{():}
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+
+        \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{at\PYGZus{}end}\PYG{p}{():}
+            \PYG{n}{StatusHandler}\PYG{o}{.}\PYG{n}{throw}\PYG{p}{(}\PYG{n}{ErrorType}\PYG{o}{.}\PYG{n}{SyntaxError}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,}
+                        \PYG{l+s+s1}{\PYGZsq{}Unterminated string, did you forget a \PYGZdq{}?\PYGZsq{}}\PYG{p}{)}
+            \PYG{k}{return}
+
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+
+        \PYG{n}{value} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{start} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{:} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current} \PYG{o}{\PYGZhy{}} \PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{STRING}\PYG{p}{,} \PYG{n}{value}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} @printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}number}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Adds a number\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{is\PYGZus{}float} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{c+c1}{\PYGZsh{} in a number the next character is either a number or a period }
+        \PYG{k}{while} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()}\PYG{o}{.}\PYG{n}{isnumeric}\PYG{p}{()} \PYG{o+ow}{or} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}.\PYGZsq{}}\PYG{p}{:}
+                \PYG{n}{is\PYGZus{}float} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{if} \PYG{n}{is\PYGZus{}float} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{1}\PYG{p}{:}
+                \PYG{n}{StatusHandler}\PYG{o}{.}\PYG{n}{throw}\PYG{p}{(}\PYG{n}{ErrorType}\PYG{o}{.}\PYG{n}{SyntaxError}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,} 
+                            \PYG{l+s+s1}{\PYGZsq{}Incorrect number format, too many periods.\PYGZsq{}}\PYG{p}{)}
+                \PYG{k}{return}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+
+        \PYG{c+c1}{\PYGZsh{} string representing the number}
+        \PYG{n}{lexeme} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{start}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}\PYG{p}{]}
+        \PYG{c+c1}{\PYGZsh{} store as int or float depending on the type}
+        \PYG{k}{if} \PYG{n}{is\PYGZus{}float} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NUMBER}\PYG{p}{,} \PYG{n+nb}{int}\PYG{p}{(}\PYG{n}{lexeme}\PYG{p}{))}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NUMBER}\PYG{p}{,} \PYG{n+nb}{float}\PYG{p}{(}\PYG{n}{lexeme}\PYG{p}{))}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{is\PYGZus{}id\PYGZus{}char}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{character}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{bool}\PYG{p}{:}
+        \PYG{k}{if} \PYG{n}{character}\PYG{o}{.}\PYG{n}{isalpha}\PYG{p}{()} \PYG{o+ow}{or} \PYG{n}{character}\PYG{o}{.}\PYG{n}{isnumeric}\PYG{p}{()} \PYG{o+ow}{or} \PYG{n}{character} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+            \PYG{k}{return} \PYG{k+kc}{True}
+        \PYG{k}{return} \PYG{k+kc}{False}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{add\PYGZus{}identifier}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Adds an identifier token\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{while} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{is\PYGZus{}id\PYGZus{}char}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{peek}\PYG{p}{()):}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{advance}\PYG{p}{()}
+
+        \PYG{n}{lexeme} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{source}\PYG{p}{[}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{start}\PYG{p}{:}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{current}\PYG{p}{]}
+        \PYG{k}{if} \PYG{n}{lexeme} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}True\PYGZsq{}}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{TRUE}\PYG{p}{,} \PYG{k+kc}{True}\PYG{p}{)}
+        \PYG{k}{elif} \PYG{n}{lexeme} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}False\PYGZsq{}}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{FALSE}\PYG{p}{,} \PYG{k+kc}{True}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{add\PYGZus{}token}\PYG{p}{(}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{IDENTIFIER}\PYG{p}{)}
+\end{Verbatim}

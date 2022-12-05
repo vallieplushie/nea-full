@@ -266,5 +266,3 @@ class Scanner:
             self.add_token(TokenType.FALSE, True)
         else:
             self.add_token(TokenType.IDENTIFIER)
-
-

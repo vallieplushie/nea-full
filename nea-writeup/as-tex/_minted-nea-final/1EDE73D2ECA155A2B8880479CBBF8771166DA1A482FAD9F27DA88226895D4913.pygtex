@@ -1,0 +1,46 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{n}{TokenType}
+
+\PYG{k}{class} \PYG{n+nc}{Grammar}\PYG{p}{:}
+    \PYG{n}{reserved\PYGZus{}ids} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{c+c1}{\PYGZsh{} \PYGZsq{}fn\PYGZsq{}}
+            \PYG{c+c1}{\PYGZsh{} \PYGZsq{}let\PYGZsq{}}
+            \PYG{l+s+s1}{\PYGZsq{}in\PYGZsq{}} \PYG{p}{:} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{IN}\PYG{p}{,}
+            \PYG{l+s+s1}{\PYGZsq{}true\PYGZsq{}} \PYG{p}{:} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{TRUE}\PYG{p}{,}
+            \PYG{l+s+s1}{\PYGZsq{}false\PYGZsq{}} \PYG{p}{:} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{FALSE}
+            \PYG{p}{\PYGZcb{}} 
+    \PYG{c+c1}{\PYGZsh{} operators = [}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.PLUS,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.MINUS,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.STAR,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.SLASH,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.COLON,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.SPACE,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.SEMI\PYGZus{}COLON,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.PIPE,}
+    \PYG{c+c1}{\PYGZsh{}         TokenType.QUESTION,}
+    \PYG{c+c1}{\PYGZsh{}         ]}
+    \PYG{n}{parens} \PYG{o}{=} \PYG{p}{[}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LEFT\PYGZus{}PAREN}\PYG{p}{,} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{RIGHT\PYGZus{}PAREN}\PYG{p}{]} 
+    \PYG{n}{bindings} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{COLON}\PYG{p}{:} \PYG{p}{\PYGZob{}} \PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}} \PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SPACE}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{10}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}L\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{ARROW}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{PIPE}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}L\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{QUESTION}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SEMI\PYGZus{}COLON}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SLASH}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{STAR}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{PLUS}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},} 
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{MINUS}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{7}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{EQUAL}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LESS}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{GREATER}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LESS\PYGZus{}EQUAL}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{GREATER\PYGZus{}EQUAL}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{6}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{OR}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{AND}\PYG{p}{:} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{:} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{:} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{\PYGZcb{},}
+            \PYG{p}{\PYGZcb{}}
+    \PYG{n}{operators} \PYG{o}{=} \PYG{n}{bindings}\PYG{o}{.}\PYG{n}{keys}\PYG{p}{()}
+    \PYG{n}{unary} \PYG{o}{=} \PYG{p}{[}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NOT}\PYG{p}{,} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{MINUS}\PYG{p}{]}
+    \PYG{n}{literal} \PYG{o}{=} \PYG{p}{[}\PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{NUMBER}\PYG{p}{,} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{STRING}\PYG{p}{,} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{TRUE}\PYG{p}{,} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{FALSE}\PYG{p}{]}
+\end{Verbatim}

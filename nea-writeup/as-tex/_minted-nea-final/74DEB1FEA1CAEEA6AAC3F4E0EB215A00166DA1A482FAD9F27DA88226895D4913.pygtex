@@ -1,0 +1,107 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k}{class} \PYG{n+nc}{Parser}\PYG{p}{:}
+    \PYG{n}{iterpointer} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{find\PYGZus{}lowest\PYGZus{}bound}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{):}
+        \PYG{c+c1}{\PYGZsh{} returns the index of the operator with the least precedence in the expression}
+        \PYG{c+c1}{\PYGZsh{} skips over any expressions in parentheticals}
+        \PYG{n}{in\PYGZus{}paren} \PYG{o}{=} \PYG{l+m+mi}{0}
+        \PYG{n}{min\PYGZus{}bind} \PYG{o}{=} \PYG{l+m+mi}{20}
+        \PYG{n}{min\PYGZus{}index} \PYG{o}{=} \PYG{l+m+mi}{0} 
+
+        \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{)):}
+            \PYG{c+c1}{\PYGZsh{} skip parentheses }
+            \PYG{k}{if} \PYG{n}{expr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LEFT\PYGZus{}PAREN}\PYG{p}{:}
+                \PYG{n}{in\PYGZus{}paren} \PYG{o}{+=} \PYG{l+m+mi}{1}
+            \PYG{k}{elif} \PYG{n}{expr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{RIGHT\PYGZus{}PAREN}\PYG{p}{:}
+                \PYG{n}{in\PYGZus{}paren} \PYG{o}{\PYGZhy{}=} \PYG{l+m+mi}{1}
+            \PYG{k}{else}\PYG{p}{:}
+                \PYG{n}{in\PYGZus{}paren} \PYG{o}{+=} \PYG{l+m+mi}{0}
+
+            \PYG{k}{if} \PYG{n}{in\PYGZus{}paren} \PYG{o}{\PYGZgt{}} \PYG{l+m+mi}{0}\PYG{p}{:}
+                \PYG{k}{continue}
+
+            \PYG{k}{if} \PYG{n}{expr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{operators}\PYG{p}{:}
+                \PYG{n}{rule} \PYG{o}{=} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{bindings}\PYG{p}{[}\PYG{n}{expr}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type}\PYG{p}{]}
+                \PYG{k}{if} \PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{]} \PYG{o}{\PYGZlt{}} \PYG{n}{min\PYGZus{}bind}\PYG{p}{:}
+                    \PYG{n}{min\PYGZus{}bind} \PYG{o}{=} \PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{]}
+                    \PYG{n}{min\PYGZus{}index} \PYG{o}{=} \PYG{n}{i}
+                \PYG{k}{elif} \PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}prec\PYGZsq{}}\PYG{p}{]} \PYG{o}{==} \PYG{n}{min\PYGZus{}bind}\PYG{p}{:}
+                    \PYG{k}{if} \PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}R\PYGZsq{}}\PYG{p}{:}
+                        \PYG{k}{continue}
+                    \PYG{k}{elif} \PYG{n}{rule}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}assoc\PYGZsq{}}\PYG{p}{]} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}L\PYGZsq{}}\PYG{p}{:}
+                        \PYG{n}{min\PYGZus{}index} \PYG{o}{=} \PYG{n}{i}
+
+        \PYG{k}{return} \PYG{n}{min\PYGZus{}index}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{clean\PYGZus{}expression}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{:} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n}{Token}\PYG{p}{])} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n}{Token}\PYG{p}{]:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Cleans an expression before it is parsed and checks for certain conditions.\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{)} \PYG{o}{\PYGZgt{}=} \PYG{l+m+mi}{3}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{LEFT\PYGZus{}PAREN} \PYG{o+ow}{and} \PYG{n}{expr}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{RIGHT\PYGZus{}PAREN}\PYG{p}{:}
+                \PYG{n}{expr} \PYG{o}{=} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}
+        \PYG{k}{elif} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{)} \PYG{o}{==} \PYG{l+m+mi}{2}\PYG{p}{:}
+            \PYG{k}{if} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{unary}\PYG{p}{:}
+                \PYG{n}{expr} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Token}\PYG{p}{(}\PYG{k+kc}{None}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{line}\PYG{p}{)]} \PYG{o}{+} \PYG{n}{expr}
+            \PYG{k}{elif} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{operators}\PYG{p}{:}
+                \PYG{n}{StatusHandler}\PYG{o}{.}\PYG{n}{throw}\PYG{p}{(}\PYG{n}{ErrorType}\PYG{o}{.}\PYG{n}{OperatorUseError}\PYG{p}{,} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,}
+                            \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Operator }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ is missing a left operand.\PYGZsq{}}\PYG{p}{)}
+            \PYG{k}{elif} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{operators}\PYG{p}{:}
+                \PYG{n}{StatusHandler}\PYG{o}{.}\PYG{n}{throw}\PYG{p}{(}\PYG{n}{ErrorType}\PYG{o}{.}\PYG{n}{OperatorUseError}\PYG{p}{,} \PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{o}{.}\PYG{n}{line}\PYG{p}{,}
+                            \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}Operator }\PYG{l+s+si}{\PYGZob{}}\PYG{n}{expr}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{ is missing a right operand.\PYGZsq{}}\PYG{p}{)}
+        \PYG{k}{return} \PYG{n}{expr}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{get\PYGZus{}action}\PYG{p}{(}\PYG{n}{token}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Action}\PYG{p}{:}
+        \PYG{k}{match} \PYG{n}{token}\PYG{o}{.}\PYG{n}{type}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{} case TokenType.COLON: return AssignAction()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{PLUS}\PYG{p}{:} \PYG{k}{return} \PYG{n}{AdditionAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{MINUS}\PYG{p}{:} \PYG{k}{return} \PYG{n}{SubtractionAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{STAR}\PYG{p}{:} \PYG{k}{return} \PYG{n}{MultiplicationAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{SLASH}\PYG{p}{:} \PYG{k}{return} \PYG{n}{DivisionAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{AND}\PYG{p}{:} \PYG{k}{return} \PYG{n}{AndAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{OR}\PYG{p}{:} \PYG{k}{return} \PYG{n}{OrAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{COLON}\PYG{p}{:} \PYG{k}{return} \PYG{n}{AssignAction}\PYG{p}{()}
+            \PYG{k}{case} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{IDENTIFIER}\PYG{p}{:} \PYG{k}{return} \PYG{n}{IdentifierAction}\PYG{p}{(}\PYG{n}{token}\PYG{p}{)}
+            \PYG{k}{case} \PYG{k}{\PYGZus{}}\PYG{p}{:}
+                \PYG{k}{if} \PYG{n}{token}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{literal}\PYG{p}{:}
+                    \PYG{k}{return} \PYG{n}{LiteralAction}\PYG{p}{(}\PYG{n}{token}\PYG{p}{)}
+                \PYG{k}{else}\PYG{p}{:}
+                    \PYG{k}{return} \PYG{n}{Action}\PYG{p}{()}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{checkerror}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{to\PYGZus{}tree}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{:} \PYG{n+nb}{list}\PYG{p}{[}\PYG{n}{Token}\PYG{p}{])} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n}{Tree}\PYG{p}{:}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Converts a list of tokens into a Tree, which it returns\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{index} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{find\PYGZus{}lowest\PYGZus{}bound}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{)} 
+        \PYG{n}{action} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{get\PYGZus{}action}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{[}\PYG{n}{index}\PYG{p}{])}
+        \PYG{k}{if} \PYG{p}{[}\PYG{n}{i} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{expr} \PYG{k}{if} \PYG{n}{i}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{in} \PYG{n}{Grammar}\PYG{o}{.}\PYG{n}{operators}\PYG{p}{]:}
+            \PYG{n}{lexp} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{clean\PYGZus{}expression}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{[:}\PYG{n}{index}\PYG{p}{])}
+            \PYG{n}{rexp} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{clean\PYGZus{}expression}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{[}\PYG{n}{index}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:])}
+
+            \PYG{n}{ltree} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{to\PYGZus{}tree}\PYG{p}{(}\PYG{n}{lexp}\PYG{p}{)}
+            \PYG{n}{rtree} \PYG{o}{=} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{to\PYGZus{}tree}\PYG{p}{(}\PYG{n}{rexp}\PYG{p}{)} 
+            \PYG{c+c1}{\PYGZsh{} print(Tree(expr[index], action, ltree, rtree)) }
+            \PYG{k}{return} \PYG{n}{Tree}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{[}\PYG{n}{index}\PYG{p}{],} \PYG{n}{action}\PYG{p}{,} \PYG{n}{ltree}\PYG{p}{,} \PYG{n}{rtree}\PYG{p}{)}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{c+c1}{\PYGZsh{} print(Tree(expr[index], action))}
+            \PYG{k}{return} \PYG{n}{Tree}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{[}\PYG{n}{index}\PYG{p}{],} \PYG{n}{action}\PYG{p}{)}
+
+    \PYG{n+nd}{@staticmethod}
+    \PYG{c+c1}{\PYGZsh{}@printlog}
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}INFO\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{parse}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{expr}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{o}{.}\PYG{n}{type} \PYG{o+ow}{is} \PYG{n}{TokenType}\PYG{o}{.}\PYG{n}{EOF}\PYG{p}{:}
+            \PYG{k}{return} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{to\PYGZus{}tree}\PYG{p}{(}\PYG{n}{Parser}\PYG{o}{.}\PYG{n}{clean\PYGZus{}expression}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{[:}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]))}
+        \PYG{k}{return} \PYG{n}{Parser}\PYG{o}{.}\PYG{n}{to\PYGZus{}tree}\PYG{p}{(}\PYG{n}{expr}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Exports the LICONF config object\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k}{class} \PYG{n+nc}{LICONF}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Global configuration container\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{n}{HAD\PYGZus{}ERROR} \PYG{o}{=} \PYG{k+kc}{False}
+    \PYG{n}{INTERACTIVE\PYGZus{}MODE} \PYG{o}{=} \PYG{k+kc}{True}
+
+    \PYG{n}{LOG\PYGZus{}TYPE} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}FILE\PYGZsq{}} \PYG{c+c1}{\PYGZsh{} | \PYGZsq{}CONFIG\PYGZsq{}}
+    \PYG{n}{LOG\PYGZus{}LEVEL} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}
+    \PYG{n}{LOG\PYGZus{}TABLE} \PYG{o}{=} \PYG{p}{\PYGZob{}}\PYG{l+s+s1}{\PYGZsq{}TRACE\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}DEBUG\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}INFO\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}WARN\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}ERROR\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+s+s1}{\PYGZsq{}FATAL\PYGZsq{}}\PYG{p}{:}\PYG{l+m+mi}{5}\PYG{p}{\PYGZcb{}}
+    \PYG{n}{LOG\PYGZus{}PATH} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}/Users/valerie/Documents/Sixth\PYGZhy{}Form/Computer\PYGZhy{}Science/nea\PYGZhy{}full\PYGZhy{}repo/lilac\PYGZhy{}implementation/log/log.txt\PYGZsq{}}
+
+
+\end{Verbatim}

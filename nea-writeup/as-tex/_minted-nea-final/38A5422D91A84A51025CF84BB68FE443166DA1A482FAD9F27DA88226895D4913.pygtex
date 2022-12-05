@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{decorator}\PYG{p}{(}\PYG{n}{example}\PYG{p}{)(}\PYG{l+s+s1}{\PYGZsq{}Hello Worldd!\PYGZsq{}}\PYG{p}{)}
+\end{Verbatim}

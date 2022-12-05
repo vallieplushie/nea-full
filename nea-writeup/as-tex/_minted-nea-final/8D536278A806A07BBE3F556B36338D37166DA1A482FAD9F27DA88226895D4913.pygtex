@@ -1,0 +1,21 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Tokens for representing source code\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k}{class} \PYG{n+nc}{Token}\PYG{p}{:}
+    \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}Token class which is used to represent a token in source code\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} 
+                 \PYG{n+nb}{type}\PYG{p}{:} \PYG{n}{TokenType}\PYG{p}{,} 
+                 \PYG{n}{lexeme}\PYG{p}{:} \PYG{n+nb}{str}\PYG{p}{,} 
+                 \PYG{n}{line}\PYG{p}{:} \PYG{n+nb}{int}\PYG{p}{,} 
+                 \PYG{n}{literal}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{k+kc}{None}\PYG{p}{:}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{type} \PYG{o}{=} \PYG{n+nb}{type}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{lexeme} \PYG{o}{=} \PYG{n}{lexeme}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line} \PYG{o}{=} \PYG{n}{line}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{literal} \PYG{o}{=} \PYG{n}{literal}
+
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}str\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{)} \PYG{o}{\PYGZhy{}\PYGZgt{}} \PYG{n+nb}{str}\PYG{p}{:}
+        \PYG{k}{return} \PYG{l+s+sa}{f}\PYG{l+s+s1}{\PYGZsq{}(}\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{type}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{: }\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{lexeme}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{, }\PYG{l+s+si}{\PYGZob{}}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{line}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s1}{)\PYGZsq{}}
+
+\end{Verbatim}

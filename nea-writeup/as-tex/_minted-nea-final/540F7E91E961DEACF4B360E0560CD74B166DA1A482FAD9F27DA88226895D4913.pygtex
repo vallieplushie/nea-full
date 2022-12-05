@@ -1,0 +1,52 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{.} \PYG{k+kn}{import} \PYG{o}{*}
+
+\PYG{k}{class} \PYG{n+nc}{Environment}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{stackmonad} \PYG{o}{=} \PYG{n}{StackMonad}\PYG{p}{(}\PYG{n}{Stack}\PYG{p}{())}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{table} \PYG{o}{=} \PYG{p}{\PYGZob{}\PYGZcb{}}
+
+\PYG{k}{class} \PYG{n+nc}{EnvMonad}\PYG{p}{:}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{env}\PYG{o}{=}\PYG{k+kc}{None}\PYG{p}{):}
+        \PYG{k}{if} \PYG{n}{env} \PYG{o+ow}{is} \PYG{k+kc}{None}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env} \PYG{o}{=} \PYG{n}{Environment}\PYG{p}{()}
+        \PYG{k}{else}\PYG{p}{:}
+            \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env} \PYG{o}{=} \PYG{n}{env}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{trace} \PYG{o}{=} \PYG{p}{[]}
+
+    \PYG{k}{def} \PYG{n+nf}{trace}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+        \PYG{n}{string} \PYG{o}{=} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}}
+        \PYG{k}{for} \PYG{n}{s} \PYG{o+ow}{in} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{trace}\PYG{p}{:}
+            \PYG{n}{string} \PYG{o}{+=} \PYG{n}{s}
+        \PYG{k}{return} \PYG{n}{string}
+
+    \PYG{k}{def} \PYG{n+nf}{consume}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{scope}\PYG{p}{:} \PYG{n}{Environment}\PYG{p}{):}
+        \PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{        \PYGZsq{}Consumes\PYGZsq{} an environment, merging it with the current one.}
+\PYG{l+s+sd}{        The stack of the second is pushed to the top, and the datatables are merged scope ont env.}
+\PYG{l+s+sd}{        \PYGZdq{}\PYGZdq{}\PYGZdq{}}
+        \PYG{n}{newenv} \PYG{o}{=} \PYG{n}{Environment}\PYG{p}{()}
+        \PYG{n}{newenv}\PYG{o}{.}\PYG{n}{stack\PYGZus{}monad} \PYG{o}{=} \PYG{n}{StackMonad}\PYG{p}{(}\PYG{n}{Stack}\PYG{p}{(}\PYG{n}{Stack}\PYG{o}{.}\PYG{n}{join}\PYG{p}{(}\PYG{n}{scope}\PYG{o}{.}\PYG{n}{stack\PYGZus{}monad}\PYG{o}{.}\PYG{n}{stack}\PYG{p}{,} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env}\PYG{o}{.}\PYG{n}{stack\PYGZus{}monad}\PYG{o}{.}\PYG{n}{stack}\PYG{p}{)))}
+        \PYG{n}{newenv}\PYG{o}{.}\PYG{n}{table} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env}\PYG{o}{.}\PYG{n}{table} \PYG{o}{|} \PYG{n}{scope}\PYG{o}{.}\PYG{n}{table}
+        \PYG{k}{return} \PYG{n}{EnvMonad}\PYG{p}{(}\PYG{n}{newenv}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} self.env.stack\PYGZus{}monad = StackMonad(Stack(Stack.join(scope.stack\PYGZus{}monad.stack, self.env.stack\PYGZus{}monad.stack)))}
+        \PYG{c+c1}{\PYGZsh{} self.env.table = self.env.table | scope.table}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}INFO\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf}{bind}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{action}\PYG{p}{):}
+        \PYG{n}{result} \PYG{o}{=} \PYG{n}{action}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Add to the trace the action being run}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{trace}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{action}\PYG{o}{.}\PYG{n}{name}\PYG{p}{())}
+        \PYG{k}{return} \PYG{n}{result}
+
+    \PYG{n+nd}{@StatusHandler}\PYG{o}{.}\PYG{n}{logging}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}INFO\PYGZsq{}}\PYG{p}{)}
+    \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}rshift\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{action}\PYG{p}{):}
+        \PYG{n}{result} \PYG{o}{=} \PYG{n}{action}\PYG{o}{.}\PYG{n}{run}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{env}\PYG{p}{)}
+        \PYG{c+c1}{\PYGZsh{} Add to the trace the action being run}
+        \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{trace}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{action}\PYG{o}{.}\PYG{n}{name}\PYG{p}{())}
+        \PYG{c+c1}{\PYGZsh{}if result is None:}
+            \PYG{c+c1}{\PYGZsh{}return result}
+        \PYG{c+c1}{\PYGZsh{}else:}
+            \PYG{c+c1}{\PYGZsh{}return EnvMonad(result)}
+        \PYG{k}{return} \PYG{n}{result}
+\end{Verbatim}
